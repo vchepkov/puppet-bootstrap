@@ -1,3 +1,6 @@
+mod 'concat',
+  :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
+  :tag => '2.1.0'
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
   :tag => '0.4.0'
