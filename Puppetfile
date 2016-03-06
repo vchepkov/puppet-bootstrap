@@ -1,3 +1,6 @@
+mod 'git',
+  :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
+  :tag => '0.4.0'
 mod 'hiera',
   :git => 'https://github.com/hunner/puppet-hiera.git',
   :tag => '2.0.1'
