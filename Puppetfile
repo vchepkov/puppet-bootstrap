@@ -1,6 +1,12 @@
+mod 'apache',
+  :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
+  :tag => '1.9.0'
 mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
   :tag => '2.1.0'
+mod 'epel',
+  :git => 'https://github.com/stahnma/puppet-module-epel.git',
+  :tag => '1.2.2'
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
   :tag => '0.4.0'
@@ -22,12 +28,21 @@ mod 'puppet',
 mod 'puppetdb',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
   :tag => '5.1.2'
+mod 'puppetboard',
+  :git => 'https://github.com/voxpupuli/puppet-puppetboard.git',
+  :tag => 'v2.8.2'
 mod 'puppetserver_gem',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git',
   :tag => '0.2.0'
+mod 'python',
+  :git => 'https://github.com/stankevich/puppet-python.git',
+  :tag => '1.12.0'
 mod 'r10k',
   :git => 'https://github.com/acidprime/r10k.git',
   :tag => 'v3.2.0'
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
   :tag => '4.12.0'
+mod 'vcsrepo',
+  :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo.git',
+  :tag => '1.3.2'

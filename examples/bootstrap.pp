@@ -61,3 +61,32 @@ class { 'hiera':
   eyaml              => true,
   create_keys        => true,
 }
+
+class { 'apache': }
+
+file { '/var/www/html/index.html':
+  ensure  => file,
+  owner   => root,
+  group   => root,
+  content => '<html><head><meta http-equiv="refresh" content="0;/puppetboard"></head></html>',
+  require => Class['apache'],
+}
+
+class { 'apache::mod::wsgi': }
+
+class { 'python':
+  virtualenv => present,
+  dev        => present,
+}
+
+class { 'puppetboard':
+  basedir           => '/opt/puppetboard',
+  enable_catalog    => true,
+  revision          => 'v0.1.2',
+  reports_count     => 20,
+  require           => Class['python'],
+}
+
+class { 'puppetboard::apache::conf':
+  basedir => '/opt/puppetboard',
+}
