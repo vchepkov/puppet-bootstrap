@@ -5,8 +5,11 @@ mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
   :tag => '0.4.0'
 mod 'hiera',
-  :git => 'https://github.com/hunner/puppet-hiera.git',
+  :git => 'https://github.com/voxpupuli/puppet-hiera.git',
   :tag => '2.0.1'
+mod 'inifile',
+  :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
+  :tag => '1.5.0'
 mod 'puppet',
   :git => 'https://github.com/theforeman/puppet-puppet.git',
   :tag => '4.3.1'
@@ -16,3 +19,6 @@ mod 'r10k',
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
   :tag => '4.12.0'
+mod 'puppetserver_gem',
+  :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git',
+  :tag => '0.2.0'

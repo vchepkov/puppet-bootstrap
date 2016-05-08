@@ -15,4 +15,23 @@ class { 'puppet':
   server_jvm_min_heap_size      => '512m',
   server_jvm_max_heap_size      => '512m',
   server_jvm_extra_args         => '-XX:MaxPermSize=256m',
+  server_strict_variables       => true,
+}
+
+class { 'hiera':
+  hierarchy          => [
+    'nodes/%{clientcert}',
+    'roles/%{role}',
+    'locations/%{location}',
+    'tiers/%{tier}',
+    'common/global',
+  ],
+  master_service     => 'puppetserver',
+  provider           => 'puppetserver_gem',
+  puppet_conf_manage => false,
+  hiera_yaml         => "${::settings::codedir}/hiera.yaml",
+  keysdir            => "${::settings::codedir}/keys",
+  merge_behavior     => 'deeper',
+  eyaml              => true,
+  create_keys        => true,
 }
