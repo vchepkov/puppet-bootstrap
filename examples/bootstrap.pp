@@ -2,38 +2,28 @@ class { 'r10k':
   remote   => 'https://github.com/vchepkov/puppet-bootstrap.git',
 }
 
-if $facts['bootstrap'] == 'yes' {
-  $runmode                     = 'none'
-  $server_puppetdb_host        = undef
-  $server_reports              = 'store'
-  $server_storeconfigs_backend = undef
-} else {
-  $runmode                     = 'service'
-  $server_puppetdb_host        = 'master.localdomain'
-  $server_reports              = 'puppetdb'
-  $server_storeconfigs_backend = 'puppetdb'
+class { 'puppetdb::database::postgresql':
+  manage_package_repo => true,
+  postgres_version    => '9.4',
+  before              => Class['puppetdb::server'],
+}
 
-  class { 'puppetdb::database::postgresql':
-    manage_package_repo => true,
-    postgres_version    => '9.4',
-    before              => Class['puppetdb::server'],
-  }
+package { 'postgresql94-contrib':
+  require => Class['puppetdb::database::postgresql'],
+  before  => Class['puppetdb::server'],
+}
 
-  package { 'postgresql94-contrib': }
-
-  class { 'puppetdb::server':
-    manage_firewall => false,
-  }
+class { 'puppetdb::server':
+  manage_firewall => false,
 }
 
 class { 'puppet':
   server                        => true,
-  runmode                       => $runmode,
   server_implementation         => 'puppetserver',
   server_foreman                => false,
-  server_puppetdb_host          => $server_puppetdb_host,
-  server_reports                => $server_reports,
-  server_storeconfigs_backend   => $server_storeconfigs_backend,
+  server_puppetdb_host          => 'master.localdomain',
+  server_reports                => 'puppetdb',
+  server_storeconfigs_backend   => 'puppetdb',
   server_external_nodes         => '',
   server_directory_environments => true,
   server_environments           => ['production'],
