@@ -16,6 +16,7 @@ if $facts['bootstrap'] == 'yes' {
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
     postgres_version    => '9.4',
+    before              => Class['puppetdb::server'],
   }
 
   package { 'postgresql94-contrib': }
