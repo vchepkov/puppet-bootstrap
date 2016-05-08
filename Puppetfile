@@ -13,9 +13,15 @@ mod 'inifile',
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
   :tag => '4.1.2'
+mod 'postgresql',
+  :git => 'https://github.com/puppetlabs/puppetlabs-postgresql.git',
+  :tag => '4.7.1'
 mod 'puppet',
   :git => 'https://github.com/theforeman/puppet-puppet.git',
   :tag => '4.3.1'
+mod 'puppetdb',
+  :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
+  :tag => '5.1.2'
 mod 'puppetserver_gem',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git',
   :tag => '0.2.0'
