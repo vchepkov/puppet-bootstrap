@@ -5,7 +5,7 @@ class { 'r10k':
 if $facts['bootstrap'] == 'yes' {
   $runmode                     = 'none'
   $server_puppetdb_host        = undef
-  $server_reports              = undef
+  $server_reports              = 'store'
   $server_storeconfigs_backend = undef
 } else {
   $runmode                     = 'service'
