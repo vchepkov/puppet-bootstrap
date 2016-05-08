@@ -2,24 +2,37 @@ class { 'r10k':
   remote   => 'https://github.com/vchepkov/puppet-bootstrap.git',
 }
 
-class { 'puppetdb::database::postgresql':
-  manage_package_repo => true,
-  postgres_version    => '9.4',
-}
+if $facts['bootstrap'] == 'yes' {
+  $runmode                     = 'none'
+  $server_puppetdb_host        = undef
+  $server_reports              = undef
+  $server_storeconfigs_backend = undef
+} else {
+  $runmode                     = 'service'
+  $server_puppetdb_host        = 'master.localdomain'
+  $server_reports              = 'puppetdb'
+  $server_storeconfigs_backend = 'puppetdb'
 
-package { 'postgresql94-contrib': }
+  class { 'puppetdb::database::postgresql':
+    manage_package_repo => true,
+    postgres_version    => '9.4',
+  }
 
-class { 'puppetdb::server':
-  manage_firewall    => false,
+  package { 'postgresql94-contrib': }
+
+  class { 'puppetdb::server':
+    manage_firewall => false,
+  }
 }
 
 class { 'puppet':
   server                        => true,
+  runmode                       => $runmode,
   server_implementation         => 'puppetserver',
   server_foreman                => false,
-  server_puppetdb_host          => 'master.localdomain',
-  server_reports                => 'puppetdb',
-  server_storeconfigs_backend   => 'puppetdb',
+  server_puppetdb_host          => $server_puppetdb_host,
+  server_reports                => $server_reports,
+  server_storeconfigs_backend   => $server_storeconfigs_backend,
   server_external_nodes         => '',
   server_directory_environments => true,
   server_environments           => ['production'],
