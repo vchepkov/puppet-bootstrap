@@ -34,6 +34,9 @@ class { 'puppet':
   server_strict_variables       => true,
 }
 
+# Don't start agent until master is configured
+Service['puppetserver'] -> Service['puppet']
+
 class { 'hiera':
   hierarchy          => [
     'nodes/%{clientcert}',
