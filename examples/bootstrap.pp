@@ -32,6 +32,7 @@ class { 'puppet':
   server_jvm_max_heap_size      => '512m',
   server_jvm_extra_args         => '-XX:MaxPermSize=256m',
   server_strict_variables       => true,
+  show_diff                     => true,
 }
 
 # Don't start agent until master is configured
