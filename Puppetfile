@@ -1,6 +1,6 @@
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
-  :tag => '1.9.0'
+  :tag => '1.10.0'
 mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
   :tag => '2.1.0'
@@ -18,7 +18,7 @@ mod 'inifile',
   :tag => '1.5.0'
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
-  :tag => '4.1.2'
+  :tag => '4.2.0'
 mod 'postgresql',
   :git => 'https://github.com/puppetlabs/puppetlabs-postgresql.git',
   :tag => '4.7.1'
