@@ -12,7 +12,7 @@ mod 'git',
   :tag => '0.4.0'
 mod 'hiera',
   :git => 'https://github.com/voxpupuli/puppet-hiera.git',
-  :tag => 'v2.1.0'
+  :ref => 'eff39802515fb59d5425c0e673305d0dab7a8a1b'
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
   :tag => '1.5.0'
