@@ -7,6 +7,9 @@ mod 'concat',
 mod 'epel',
   :git => 'https://github.com/stahnma/puppet-module-epel.git',
   :tag => '1.2.2'
+mod 'extlib',
+  :git => 'https://github.com/voxpupuli/puppet-extlib.git',
+  :tag => 'v0.11.3'
 mod 'git',
   :git => 'https://github.com/puppetlabs/puppetlabs-git.git',
   :tag => '0.4.0'
@@ -24,7 +27,7 @@ mod 'postgresql',
   :tag => '4.7.1'
 mod 'puppet',
   :git => 'https://github.com/theforeman/puppet-puppet.git',
-  :tag => '4.3.1'
+  :tag => '5.0.0'
 mod 'puppetdb',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
   :tag => '5.1.2'

@@ -19,19 +19,18 @@ class { 'puppetdb::server':
 
 class { 'puppet':
   server                        => true,
-  server_implementation         => 'puppetserver',
+  server_puppetserver_version   => '2.4.0',
   server_foreman                => false,
   server_puppetdb_host          => 'master.localdomain',
   server_reports                => 'puppetdb',
   server_storeconfigs_backend   => 'puppetdb',
   server_external_nodes         => '',
-  server_directory_environments => true,
   server_environments           => ['production'],
-  server_common_modules_path    => ['/opt/puppetlabs/puppet/modules'],
+  server_common_modules_path    => [],
   server_jvm_min_heap_size      => '512m',
   server_jvm_max_heap_size      => '512m',
-  server_jvm_extra_args         => '-XX:MaxPermSize=256m',
   server_strict_variables       => true,
+  hiera_config                  => "${::settings::codedir}/hiera.yaml",
   show_diff                     => true,
 }
 
