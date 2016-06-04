@@ -10,6 +10,10 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  unless Vagrant.has_plugin?("vagrant-vbguest")
+    raise 'vagrant-vbguest plugin is not installed!'
+  end
+
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box      = "puppetlabs/centos-7.2-64-nocm"
