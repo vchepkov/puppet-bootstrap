@@ -30,7 +30,7 @@ class { 'puppet':
   server_jvm_min_heap_size      => '512m',
   server_jvm_max_heap_size      => '512m',
   server_strict_variables       => true,
-  hiera_config                  => "${::settings::codedir}/hiera.yaml",
+  hiera_config                  => "${::settings::confdir}/hiera.yaml",
   show_diff                     => true,
 }
 
@@ -48,8 +48,8 @@ class { 'hiera':
   master_service     => 'puppetserver',
   provider           => 'puppetserver_gem',
   puppet_conf_manage => false,
-  hiera_yaml         => "${::settings::codedir}/hiera.yaml",
-  keysdir            => "${::settings::codedir}/keys",
+  hiera_yaml         => "${::settings::confdir}/hiera.yaml",
+  keysdir            => "${::settings::confdir}/keys",
   merge_behavior     => 'deeper',
   eyaml              => true,
   create_keys        => true,
