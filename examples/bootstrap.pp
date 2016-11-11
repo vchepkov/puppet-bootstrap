@@ -46,6 +46,7 @@ class { 'hiera':
   ],
   master_service     => 'puppetserver',
   provider           => 'puppetserver_gem',
+  manage_package     => true,
   puppet_conf_manage => false,
   hiera_yaml         => "${::settings::confdir}/hiera.yaml",
   keysdir            => "${::settings::confdir}/keys",
