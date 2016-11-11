@@ -19,7 +19,6 @@ class { 'puppetdb::server':
 
 class { 'puppet':
   server                        => true,
-  server_puppetserver_version   => '2.4.0',
   server_foreman                => false,
   server_puppetdb_host          => 'master.localdomain',
   server_reports                => 'puppetdb',
