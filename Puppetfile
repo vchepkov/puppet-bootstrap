@@ -1,3 +1,6 @@
+mod 'activemq',
+  :git => 'https://github.com/puppetlabs/puppetlabs-activemq.git',
+  :tag => '0.4.0'
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
   :tag => '1.11.0'
@@ -18,6 +21,9 @@ mod 'hiera',
   :tag => 'v2.4.0'
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
+  :tag => '1.6.0'
+mod 'java',
+  :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
   :tag => '1.6.0'
 mod 'mcollective',
   :git => 'https://github.com/voxpupuli/puppet-mcollective.git',
