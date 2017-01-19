@@ -75,7 +75,7 @@ class { 'python':
 class { 'puppetboard':
   basedir           => '/opt/puppetboard',
   enable_catalog    => true,
-  revision          => 'v0.1.2',
+  revision          => 'v0.2.0',
   reports_count     => 20,
   require           => Class['python'],
 }
