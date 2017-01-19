@@ -25,6 +25,9 @@ mod 'inifile',
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
   :tag => '1.6.0'
+mod 'java_ks',
+  :git => 'https://github.com/puppetlabs/puppetlabs-java_ks.git',
+  :tag => '1.4.1'
 mod 'mcollective',
   :git => 'https://github.com/voxpupuli/puppet-mcollective.git',
   :tag => 'v2.4.0'
