@@ -1,6 +1,6 @@
 mod 'activemq',
-  :git => 'https://github.com/puppetlabs/puppetlabs-activemq.git',
-  :tag => '0.4.0'
+  :git => 'https://github.com/vchepkov/puppetlabs-activemq.git',
+  :tag => '0.4.0-vvc'
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
   :tag => '1.11.0'
