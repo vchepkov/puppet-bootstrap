@@ -24,11 +24,10 @@ class { 'puppet':
   server_reports                => 'puppetdb',
   server_storeconfigs_backend   => 'puppetdb',
   server_external_nodes         => '',
-  server_environments           => ['production'],
+  server_environments           => [],
   server_common_modules_path    => [],
   server_jvm_min_heap_size      => '512m',
   server_jvm_max_heap_size      => '512m',
-  server_strict_variables       => true,
   hiera_config                  => "${::settings::confdir}/hiera.yaml",
   show_diff                     => true,
 }
