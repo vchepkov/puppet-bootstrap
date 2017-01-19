@@ -4,6 +4,9 @@ mod 'apache',
 mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
   :tag => '2.2.0'
+mod 'datacat',
+  :git => 'https://github.com/richardc/puppet-datacat.git',
+  :tag => '0.6.2'
 mod 'epel',
   :git => 'https://github.com/stahnma/puppet-module-epel.git',
   :tag => '1.2.2'
@@ -16,6 +19,9 @@ mod 'hiera',
 mod 'inifile',
   :git => 'https://github.com/puppetlabs/puppetlabs-inifile.git',
   :tag => '1.6.0'
+mod 'mcollective',
+  :git => 'https://github.com/voxpupuli/puppet-mcollective.git',
+  :tag => 'v2.4.0'
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
   :tag => '6.0.0'
