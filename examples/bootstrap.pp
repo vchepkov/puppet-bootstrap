@@ -17,6 +17,12 @@ class { 'puppetdb::server':
   manage_firewall => false,
 }
 
+postgresql::server::extension { 'pg_trgm':
+  database => 'puppetdb',
+  require  => Package['postgresql94-contrib'],
+  before   => Service['puppetdb'];
+}
+
 class { 'puppet':
   server                        => true,
   server_foreman                => false,
