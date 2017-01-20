@@ -24,6 +24,7 @@ postgresql::server::extension { 'pg_trgm':
 }
 
 class { 'puppet':
+  puppetmaster                  => 'master.localdomain',
   server                        => true,
   server_foreman                => false,
   server_puppetdb_host          => 'master.localdomain',
