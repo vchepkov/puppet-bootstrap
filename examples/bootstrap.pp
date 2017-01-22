@@ -141,6 +141,36 @@ $plugins.each | $plugin | {
     require => Yumrepo['puppetlabs-products'],
   }
 }
-class { 'mcollective::facts::cronjob':
-  run_every => '15',
+
+$metadata_script = @(END)
+#!/opt/puppetlabs/puppet/bin/ruby
+
+require "yaml"
+require 'puppet'
+require 'puppet/face'
+
+Puppet.initialize_settings
+facts = Puppet::Face[:facts, '0.0.1'].find()
+facts_y = facts.values.to_yaml
+
+File.open('/etc/puppetlabs/mcollective/facts.yaml.new', 'w', :encoding => Encoding::UTF_8) do |f|
+  f.puts facts_y
+end
+
+File.rename('/etc/puppetlabs/mcollective/facts.yaml.new', '/etc/puppetlabs/mcollective/facts.yaml')
+|END
+
+file { '/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata':
+  ensure  => 'file',
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0755',
+  content => $metadata_script,
+}
+
+$rand_min = fqdn_rand(15)
+cron { 'mcollective-metadata':
+  command => '/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata',
+  minute  => "${rand_min}-59/15",
+  require => File['/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata'],
 }
