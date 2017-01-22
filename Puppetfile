@@ -1,15 +1,9 @@
-mod 'activemq',
-  :git => 'https://github.com/vchepkov/puppetlabs-activemq.git',
-  :tag => '0.4.0-vvc'
 mod 'apache',
   :git => 'https://github.com/puppetlabs/puppetlabs-apache.git',
   :tag => '1.11.0'
 mod 'concat',
   :git => 'https://github.com/puppetlabs/puppetlabs-concat.git',
   :tag => '2.2.0'
-mod 'datacat',
-  :git => 'https://github.com/richardc/puppet-datacat.git',
-  :tag => '0.6.2'
 mod 'epel',
   :git => 'https://github.com/stahnma/puppet-module-epel.git',
   :tag => '1.2.2'
@@ -25,12 +19,9 @@ mod 'inifile',
 mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
   :tag => '1.6.0'
-mod 'java_ks',
-  :git => 'https://github.com/puppetlabs/puppetlabs-java_ks.git',
-  :tag => '1.4.1'
 mod 'mcollective',
-  :git => 'https://github.com/voxpupuli/puppet-mcollective.git',
-  :tag => 'v2.4.0'
+  :git => 'https://github.com/jorhett/puppet-mcollective.git',
+  :ref => '5e3c690a13f78349356262a3a14816a10ce106fa' # 1.0.3
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
   :tag => '6.0.0'
