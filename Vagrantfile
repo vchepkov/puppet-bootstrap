@@ -43,4 +43,19 @@ Vagrant.configure(2) do |config|
       /vagrant/examples/bootstrap.sh
     SHELL
   end
+
+  # Node
+  config.vm.define "node", autostart: false do |node|
+    node.vm.hostname = "node.localdomain"
+    node.vm.provider "virtualbox" do |vb|
+      vb.name   = "node"
+      vb.memory = "1024"
+    end
+    node.vm.provision "shell", run: "once", inline: <<-SHELL
+      systemctl mask firewalld
+      systemctl stop firewalld
+      yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
+      yum -y install puppet-agent
+    SHELL
+  end
 end
