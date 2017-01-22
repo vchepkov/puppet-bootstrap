@@ -53,11 +53,11 @@ mod 'python',
   :git => 'https://github.com/stankevich/puppet-python.git',
   :tag => '1.18.2'
 mod 'r10k',
-  :git => 'https://github.com/acidprime/r10k.git',
-  :tag => 'v3.2.0'
+  :git => 'https://github.com/voxpupuli/puppet-r10k.git',
+  :tag => 'v4.1.0'
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
-  :tag => '4.14.0'
+  :tag => '4.15.0'
 mod 'vcsrepo',
   :git => 'https://github.com/puppetlabs/puppetlabs-vcsrepo.git',
   :tag => '1.5.0'

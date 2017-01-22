@@ -42,16 +42,20 @@ class { 'puppet':
 # Don't start agent until master is configured
 Service['puppetserver'] -> Service['puppet']
 
+# Workaround for geppetto
+$hiera_gem_provider = 'puppetserver_gem'
+
 class { 'hiera':
   hierarchy          => [
     'nodes/%{clientcert}',
     'roles/%{role}',
     'locations/%{location}',
+    'groups/%{group}',
     'tiers/%{tier}',
     'common/global',
   ],
   master_service     => 'puppetserver',
-  provider           => 'puppetserver_gem',
+  provider           => $hiera_gem_provider,
   manage_package     => true,
   puppet_conf_manage => false,
   hiera_yaml         => "${::settings::confdir}/hiera.yaml",
@@ -81,7 +85,7 @@ class { 'python':
 class { 'puppetboard':
   basedir           => '/opt/puppetboard',
   enable_catalog    => true,
-  revision          => 'v0.2.0',
+  revision          => 'v0.2.0', # https://github.com/voxpupuli/puppetboard
   reports_count     => 20,
   require           => Class['python'],
 }

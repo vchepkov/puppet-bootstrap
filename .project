@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectDescription>
+	<name>puppet-bootstrap</name>
+	<comment></comment>
+	<projects>
+		<project>apache</project>
+		<project>hiera</project>
+		<project>postgresql</project>
+		<project>puppetboard</project>
+		<project>puppetdb</project>
+		<project>puppetserver_gem</project>
+		<project>python</project>
+		<project>r10k</project>
+		<project>theforeman-puppet</project>
+	</projects>
+	<buildSpec>
+		<buildCommand>
+			<name>org.eclipse.xtext.ui.shared.xtextBuilder</name>
+			<arguments>
+			</arguments>
+		</buildCommand>
+	</buildSpec>
+	<natures>
+		<nature>com.puppetlabs.geppetto.pp.dsl.ui.puppetNature</nature>
+		<nature>org.eclipse.xtext.ui.shared.xtextNature</nature>
+	</natures>
+</projectDescription>

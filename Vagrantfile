@@ -76,7 +76,7 @@ Vagrant.configure(2) do |config|
     yum -y install puppet-agent
     yum -y install git
     mkdir -p /var/tmp/modules
-    /opt/puppetlabs/bin/puppet module install --modulepath=/var/tmp/modules zack-r10k
+    /opt/puppetlabs/bin/puppet module install --modulepath=/var/tmp/modules puppet-r10k
     /opt/puppetlabs/bin/puppet apply --modulepath=/var/tmp/modules -e "class{'r10k':remote=>'https://github.com/vchepkov/puppet-bootstrap.git'}"
     r10k deploy environment production -vp
     /vagrant/examples/bootstrap.sh
