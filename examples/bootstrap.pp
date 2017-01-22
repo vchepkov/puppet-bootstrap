@@ -44,6 +44,14 @@ class { 'puppet':
                                    },
 }
 
+# Need to populate ssl directory for PuppetDB
+exec { 'puppetdb ssl-setup':
+  command => '/opt/puppetlabs/server/bin/puppetdb ssl-setup',
+  creates => '/etc/puppetlabs/puppetdb/ssl/ca.pem',
+  require => [Package['puppetdb'],Class['puppet::server::config']],
+  before  => Service['puppetdb'],  
+}
+
 # Don't start agent until master is configured
 Service['puppetserver'] -> Service['puppet']
 
