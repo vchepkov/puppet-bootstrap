@@ -37,6 +37,9 @@ class { 'puppet':
   server_jvm_max_heap_size      => '512m',
   hiera_config                  => "${::settings::confdir}/hiera.yaml",
   show_diff                     => true,
+  additional_settings           => {
+    'strict' => 'off',
+                                   },
 }
 
 # Don't start agent until master is configured
