@@ -5,6 +5,7 @@
 	<projects>
 		<project>apache</project>
 		<project>hiera</project>
+		<project>mcollective</project>
 		<project>postgresql</project>
 		<project>puppetboard</project>
 		<project>puppetdb</project>

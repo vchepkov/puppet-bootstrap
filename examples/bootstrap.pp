@@ -1,3 +1,5 @@
+$puppet_master = 'master.localdomain'
+
 class { 'r10k':
   remote   => 'https://github.com/vchepkov/puppet-bootstrap.git',
 }
@@ -24,10 +26,10 @@ postgresql::server::extension { 'pg_trgm':
 }
 
 class { 'puppet':
-  puppetmaster                  => 'master.localdomain',
+  puppetmaster                  => $puppet_master,
   server                        => true,
   server_foreman                => false,
-  server_puppetdb_host          => 'master.localdomain',
+  server_puppetdb_host          => $puppet_master,
   server_reports                => 'puppetdb',
   server_storeconfigs_backend   => 'puppetdb',
   server_external_nodes         => '',
@@ -96,3 +98,23 @@ class { 'puppetboard':
 class { 'puppetboard::apache::conf':
   basedir => '/opt/puppetboard',
 }
+
+yumrepo { 'puppetlabs-dependencies':
+  descr    => 'Puppet Labs Dependencies $releasever - $basearch',
+  baseurl  => 'http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch/',
+  gpgcheck => '1',
+  gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-PC1',
+}
+
+class { 'mcollective':
+  client_password => 'ykMofyxshgeNkojtxz17',
+  server_password => 'tnhi2qbyo1HpeXqyngaa',
+  psk_key         => '09cicjWvwqdyrizUzcsj',
+  hosts           => [ $puppet_master ],
+  require         => Yumrepo['puppetlabs-dependencies'],
+}
+
+include mcollective::middleware
+include mcollective::server
+include mcollective::client
+
