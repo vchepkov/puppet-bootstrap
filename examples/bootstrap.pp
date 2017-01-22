@@ -106,6 +106,13 @@ yumrepo { 'puppetlabs-dependencies':
   gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-PC1',
 }
 
+yumrepo { 'puppetlabs-products':
+  descr    => 'Puppet Labs Products $releasever - $basearch',
+  baseurl  => 'http://yum.puppetlabs.com/el/$releasever/products/$basearch/',
+  gpgcheck => '1',
+  gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs-PC1',
+}
+
 class { 'mcollective':
   client_password => 'ykMofyxshgeNkojtxz17',
   server_password => 'tnhi2qbyo1HpeXqyngaa',
@@ -115,6 +122,25 @@ class { 'mcollective':
 }
 
 include mcollective::middleware
-include mcollective::server
-include mcollective::client
 
+$plugins = ['puppet','package','service','shell']
+
+include mcollective::client
+$plugins.each | $plugin | {
+  mcollective::plugin::client { $plugin:
+    version => 'installed',
+    require => Yumrepo['puppetlabs-products'],
+  }
+}
+
+# Install on each puppet node
+include mcollective::server
+$plugins.each | $plugin | {
+  mcollective::plugin::agent { $plugin:
+    version => 'installed',
+    require => Yumrepo['puppetlabs-products'],
+  }
+}
+class { 'mcollective::facts::cronjob':
+  run_every => '15',
+}
