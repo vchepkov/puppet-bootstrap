@@ -1,0 +1,7 @@
+---
+classes:
+  - mcollective::middleware
+  - mcollective::client
+
+mcollective::client_password: 'ykMofyxshgeNkojtxz17'
+mcollective::plugin::clients: "%{alias('mco_plugins')}"

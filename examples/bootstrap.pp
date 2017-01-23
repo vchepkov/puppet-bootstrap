@@ -106,22 +106,3 @@ class { 'puppetboard':
 class { 'puppetboard::apache::conf':
   basedir => '/opt/puppetboard',
 }
-
-class { 'mcollective':
-  client_password => 'ykMofyxshgeNkojtxz17',
-  server_password => 'tnhi2qbyo1HpeXqyngaa',
-  psk_key         => '09cicjWvwqdyrizUzcsj',
-  hosts           => [ $puppet_master ],
-}
-
-include mcollective::middleware
-
-$plugins = ['puppet','package','service','shell']
-
-include mcollective::client
-$plugins.each | $plugin | {
-  mcollective::plugin::client { $plugin:
-    version => 'installed',
-    require => Yumrepo['puppetlabs-products'],
-  }
-}
