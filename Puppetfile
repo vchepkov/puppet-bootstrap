@@ -20,8 +20,8 @@ mod 'java',
   :git => 'https://github.com/puppetlabs/puppetlabs-java.git',
   :tag => '1.6.0'
 mod 'mcollective',
-  :git => 'https://github.com/jorhett/puppet-mcollective.git',
-  :ref => '5e3c690a13f78349356262a3a14816a10ce106fa' # 1.0.3
+  :git    => 'https://github.com/vchepkov/puppet-mcollective.git',
+  :branch => 'development'
 mod 'ntp',
   :git => 'https://github.com/puppetlabs/puppetlabs-ntp.git',
   :tag => '6.0.0'
