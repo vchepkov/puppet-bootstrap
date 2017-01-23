@@ -49,7 +49,7 @@ exec { 'puppetdb ssl-setup':
   command => '/opt/puppetlabs/server/bin/puppetdb ssl-setup',
   creates => '/etc/puppetlabs/puppetdb/ssl/ca.pem',
   require => [Package['puppetdb'],Class['puppet::server::config']],
-  before  => Service['puppetdb'],  
+  before  => Service['puppetdb'],
 }
 
 # Don't start agent until master is configured
@@ -107,26 +107,11 @@ class { 'puppetboard::apache::conf':
   basedir => '/opt/puppetboard',
 }
 
-yumrepo { 'puppetlabs-dependencies':
-  descr    => 'Puppet Labs Dependencies $releasever - $basearch',
-  baseurl  => 'http://yum.puppetlabs.com/el/$releasever/dependencies/$basearch/',
-  gpgcheck => '1',
-  gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppet-PC1',
-}
-
-yumrepo { 'puppetlabs-products':
-  descr    => 'Puppet Labs Products $releasever - $basearch',
-  baseurl  => 'http://yum.puppetlabs.com/el/$releasever/products/$basearch/',
-  gpgcheck => '1',
-  gpgkey   => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puppetlabs-PC1',
-}
-
 class { 'mcollective':
   client_password => 'ykMofyxshgeNkojtxz17',
   server_password => 'tnhi2qbyo1HpeXqyngaa',
   psk_key         => '09cicjWvwqdyrizUzcsj',
   hosts           => [ $puppet_master ],
-  require         => Yumrepo['puppetlabs-dependencies'],
 }
 
 include mcollective::middleware
@@ -139,46 +124,4 @@ $plugins.each | $plugin | {
     version => 'installed',
     require => Yumrepo['puppetlabs-products'],
   }
-}
-
-# Install on each puppet node
-include mcollective::server
-$plugins.each | $plugin | {
-  mcollective::plugin::agent { $plugin:
-    version => 'installed',
-    require => Yumrepo['puppetlabs-products'],
-  }
-}
-
-$metadata_script = @(END)
-#!/opt/puppetlabs/puppet/bin/ruby
-
-require "yaml"
-require 'puppet'
-require 'puppet/face'
-
-Puppet.initialize_settings
-facts = Puppet::Face[:facts, '0.0.1'].find()
-facts_y = facts.values.to_yaml
-
-File.open('/etc/puppetlabs/mcollective/facts.yaml.new', 'w', :encoding => Encoding::UTF_8) do |f|
-  f.puts facts_y
-end
-
-File.rename('/etc/puppetlabs/mcollective/facts.yaml.new', '/etc/puppetlabs/mcollective/facts.yaml')
-|END
-
-file { '/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata':
-  ensure  => 'file',
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0755',
-  content => $metadata_script,
-}
-
-$rand_min = fqdn_rand(15)
-cron { 'mcollective-metadata':
-  command => '/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata',
-  minute  => "${rand_min}-59/15",
-  require => File['/opt/puppetlabs/puppet/bin/refresh-mcollective-metadata'],
 }
