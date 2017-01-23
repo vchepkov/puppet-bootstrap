@@ -23,6 +23,7 @@ Vagrant.configure(2) do |config|
   # Master
   config.vm.define "master", primary: true do |master|
     master.vm.hostname = "master.localdomain"
+    master.vm.network "private_network", ip: "192.168.50.20"
     master.vm.network "forwarded_port", guest: 80, host: 8080
     master.vm.network "forwarded_port", guest: 8140, host: 8140
     master.vm.provider "virtualbox" do |vb|
@@ -30,6 +31,7 @@ Vagrant.configure(2) do |config|
       vb.memory = "2048"
     end
 
+    master.vm.provision "shell", run: "always", inline: "/sbin/ifup enp0s8"
     master.vm.provision "shell", run: "once", inline: <<-SHELL
       systemctl mask firewalld
       systemctl stop firewalld
@@ -47,15 +49,19 @@ Vagrant.configure(2) do |config|
   # Node
   config.vm.define "node", autostart: false do |node|
     node.vm.hostname = "node.localdomain"
+    node.vm.network "private_network", ip: "192.168.50.21"
     node.vm.provider "virtualbox" do |vb|
       vb.name   = "node"
       vb.memory = "1024"
     end
+    node.vm.provision "shell", run: "always", inline: "/sbin/ifup enp0s8"
     node.vm.provision "shell", run: "once", inline: <<-SHELL
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
       yum -y install puppet-agent
+      puppet resource host master.localdomain ip=192.168.50.20
+      puppet config set server master.localdomain
     SHELL
   end
 end
