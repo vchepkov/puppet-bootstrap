@@ -3,3 +3,10 @@
 classes:
   - git
   - ntp
+  - mcollective::server
+
+mcollective::hosts:
+  - master.localdomain
+mcollective::psk_key: '09cicjWvwqdyrizUzcsj'
+mcollective::server_password: 'tnhi2qbyo1HpeXqyngaa'
+  
