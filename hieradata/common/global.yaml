@@ -5,12 +5,14 @@ classes:
   - ntp
   - mcollective::server
 
-mcollective::hosts:
-  - master.localdomain
-mcollective::psk_key: '09cicjWvwqdyrizUzcsj'
-mcollective::server_password: 'tnhi2qbyo1HpeXqyngaa'
-mcollective::plugin::agents:
+mco_plugins:
   'puppet': {}
   'package': {}
   'service': {}
   'shell': {}
+
+mcollective::hosts:
+  - master.localdomain
+mcollective::psk_key: '09cicjWvwqdyrizUzcsj'
+mcollective::server_password: 'tnhi2qbyo1HpeXqyngaa'
+mcollective::plugin::agents: "%{alias('mco_plugins')}"
