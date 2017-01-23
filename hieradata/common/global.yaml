@@ -11,8 +11,9 @@ mco_plugins:
   'service': {}
   'shell': {}
 
+mcollective::facts::cronjob::run_every: 15
 mcollective::hosts:
   - master.localdomain
+mcollective::plugin::agents: "%{alias('mco_plugins')}"
 mcollective::psk_key: '09cicjWvwqdyrizUzcsj'
 mcollective::server_password: 'tnhi2qbyo1HpeXqyngaa'
-mcollective::plugin::agents: "%{alias('mco_plugins')}"
