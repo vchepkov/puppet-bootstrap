@@ -3,3 +3,4 @@ Bootstrap of Puppet Server
   - hiera (deep_merge,eyaml)
   - puppetdb
   - puppetboard
+  - mcollective
