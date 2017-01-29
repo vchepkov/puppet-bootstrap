@@ -10,7 +10,6 @@
 		<project>puppetboard</project>
 		<project>puppetdb</project>
 		<project>puppetserver_gem</project>
-		<project>python</project>
 		<project>r10k</project>
 		<project>theforeman-puppet</project>
 	</projects>

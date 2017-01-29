@@ -90,14 +90,10 @@ file { '/var/www/html/index.html':
 
 class { 'apache::mod::wsgi': }
 
-class { 'python':
-  virtualenv => present,
-  dev        => present,
-}
-
 class { 'puppetboard':
   basedir           => '/opt/puppetboard',
   enable_catalog    => true,
+  manage_virtualenv => true,
   revision          => 'v0.2.0', # https://github.com/voxpupuli/puppetboard
   reports_count     => 20,
   require           => Class['python'],
