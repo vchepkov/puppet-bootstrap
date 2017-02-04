@@ -94,7 +94,7 @@ class { 'puppetboard':
   basedir           => '/opt/puppetboard',
   enable_catalog    => true,
   manage_virtualenv => true,
-  revision          => 'v0.2.0', # https://github.com/voxpupuli/puppetboard
+  revision          => 'v0.2.1', # https://github.com/voxpupuli/puppetboard
   reports_count     => 20,
 }
 
