@@ -64,6 +64,7 @@ Vagrant.configure(2) do |config|
       yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain
+      /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL
   end
 end
