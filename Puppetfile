@@ -41,8 +41,8 @@ mod 'puppetserver_gem',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git',
   :tag => '0.2.0'
 mod 'python',
-  :git => 'https://github.com/stankevich/puppet-python.git',
-  :tag => '1.18.2'
+  :git    => 'https://github.com/vchepkov/puppet-python.git',
+  :branch => 'setuptools34'
 mod 'r10k',
   :git => 'https://github.com/voxpupuli/puppet-r10k.git',
   :tag => 'v4.1.0'
