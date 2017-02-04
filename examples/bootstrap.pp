@@ -96,7 +96,6 @@ class { 'puppetboard':
   manage_virtualenv => true,
   revision          => 'v0.2.0', # https://github.com/voxpupuli/puppetboard
   reports_count     => 20,
-  require           => Class['python'],
 }
 
 class { 'puppetboard::apache::conf':
