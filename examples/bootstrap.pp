@@ -28,6 +28,7 @@ postgresql::server::extension { 'pg_trgm':
 class { 'puppet':
   puppetmaster                  => $puppet_master,
   server                        => true,
+  autosign                      => true,
   server_foreman                => false,
   server_puppetdb_host          => $puppet_master,
   server_reports                => 'puppetdb',
