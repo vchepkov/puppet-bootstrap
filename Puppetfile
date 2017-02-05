@@ -30,7 +30,7 @@ mod 'postgresql',
   :tag => '4.8.0'
 mod 'puppet',
   :git => 'https://github.com/theforeman/puppet-puppet.git',
-  :tag => '7.0.0'
+  :tag => '7.0.1'
 mod 'puppetdb',
   :git => 'https://github.com/puppetlabs/puppetlabs-puppetdb.git',
   :tag => '5.1.2'
