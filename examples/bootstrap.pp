@@ -76,6 +76,7 @@ class { 'hiera':
   merge_behavior     => 'deeper',
   eyaml              => true,
   create_keys        => true,
+  create_symlink     => false,
 }
 
 class { 'apache': }
