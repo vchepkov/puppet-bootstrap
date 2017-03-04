@@ -15,5 +15,9 @@ mcollective::facts::cronjob::run_every: 15
 mcollective::hosts:
   - master.localdomain
 mcollective::plugin::agents: "%{alias('mco_plugins')}"
+
+mcollective::connector_ssl: true
+mcollective::connector_ssl_type: trusted
+
 mcollective::psk_key: '09cicjWvwqdyrizUzcsj'
 mcollective::server_password: 'tnhi2qbyo1HpeXqyngaa'
