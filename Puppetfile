@@ -45,7 +45,7 @@ mod 'python',
   :branch => 'setuptools34'
 mod 'r10k',
   :git => 'https://github.com/voxpupuli/puppet-r10k.git',
-  :tag => 'v4.1.0'
+  :tag => 'v4.2.0'
 mod 'stdlib',
   :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
   :tag => '4.15.0'
