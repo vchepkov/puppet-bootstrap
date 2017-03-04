@@ -2,6 +2,7 @@
 classes:
   - mcollective::middleware
   - mcollective::client
+  - bootstrap::profile::dashboard
 
 mcollective::client_password: 'ykMofyxshgeNkojtxz17'
 

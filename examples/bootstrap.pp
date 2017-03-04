@@ -87,27 +87,3 @@ package { 'gpgme':
   provider => 'puppet_gem',
   require  => Package['gcc'],
 }
-
-class { 'apache': }
-
-file { '/var/www/html/index.html':
-  ensure  => file,
-  owner   => root,
-  group   => root,
-  content => '<html><head><meta http-equiv="refresh" content="0;/puppetboard"></head></html>',
-  require => Class['apache'],
-}
-
-class { 'apache::mod::wsgi': }
-
-class { 'puppetboard':
-  basedir           => '/opt/puppetboard',
-  enable_catalog    => true,
-  manage_virtualenv => true,
-  revision          => 'v0.2.1', # https://github.com/voxpupuli/puppetboard
-  reports_count     => 20,
-}
-
-class { 'puppetboard::apache::conf':
-  basedir => '/opt/puppetboard',
-}
