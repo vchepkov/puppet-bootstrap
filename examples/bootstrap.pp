@@ -59,6 +59,8 @@ Service['puppetserver'] -> Service['puppet']
 # Workaround for geppetto
 $hiera_gem_provider = 'puppetserver_gem'
 
+ensure_packages(['gcc'], { before => Class['hiera'] })
+
 class { 'hiera':
   hierarchy          => [
     'nodes/%{clientcert}',
@@ -73,9 +75,10 @@ class { 'hiera':
   manage_package     => true,
   puppet_conf_manage => false,
   hiera_yaml         => "${::settings::confdir}/hiera.yaml",
-  keysdir            => "${::settings::confdir}/keys",
+  keysdir            => "${::settings::codedir}/keys",
   merge_behavior     => 'deeper',
   eyaml              => true,
+  eyaml_gpg          => true,
   create_keys        => true,
   create_symlink     => false,
 }

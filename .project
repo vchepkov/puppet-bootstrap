@@ -11,6 +11,7 @@
 		<project>puppetdb</project>
 		<project>puppetserver_gem</project>
 		<project>r10k</project>
+		<project>stdlib</project>
 		<project>theforeman-puppet</project>
 	</projects>
 	<buildSpec>
