@@ -80,10 +80,3 @@ class { 'hiera':
   create_keys        => true,
   create_symlink     => false,
 }
-
-ensure_packages(['gcc'])
-
-package { 'gpgme':
-  provider => 'puppet_gem',
-  require  => Package['gcc'],
-}

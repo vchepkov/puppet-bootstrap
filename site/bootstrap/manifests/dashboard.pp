@@ -1,5 +1,5 @@
 # class to install puppet dashboard
-class bootstrap::profile::dashboard {
+class bootstrap::dashboard {
 
   class { 'apache':
     server_tokens    => 'Prod',

@@ -2,7 +2,8 @@
 classes:
   - mcollective::middleware
   - mcollective::client
-  - bootstrap::profile::dashboard
+  - bootstrap::dashboard
+  - bootstrap::eyaml
 
 mcollective::client_password: 'ykMofyxshgeNkojtxz17'
 
