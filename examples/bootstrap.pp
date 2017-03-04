@@ -59,8 +59,6 @@ Service['puppetserver'] -> Service['puppet']
 # Workaround for geppetto
 $hiera_gem_provider = 'puppetserver_gem'
 
-ensure_packages(['gcc'], { before => Class['hiera'] })
-
 class { 'hiera':
   hierarchy          => [
     'nodes/%{clientcert}',
@@ -81,6 +79,13 @@ class { 'hiera':
   eyaml_gpg          => true,
   create_keys        => true,
   create_symlink     => false,
+}
+
+ensure_packages(['gcc'])
+
+package { 'gpgme':
+  provider => 'puppet_gem',
+  require  => Package['gcc'],
 }
 
 class { 'apache': }
