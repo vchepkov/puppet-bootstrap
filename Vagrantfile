@@ -36,9 +36,7 @@ Vagrant.configure(2) do |config|
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-      yum -y install puppet-agent-1.8.3
-      yum -y install yum-versionlock
-      yum versionlock puppet-agent
+      yum -y install puppet-agent
       yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
       yum -y install git
       mkdir -p /var/tmp/modules
@@ -62,9 +60,7 @@ Vagrant.configure(2) do |config|
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppetlabs.com/puppetlabs-release-pc1-el-7.noarch.rpm
-      yum -y install puppet-agent-1.8.3
-      yum -y install yum-versionlock
-      yum versionlock puppet-agent
+      yum -y install puppet-agent
       yum -y install http://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain
