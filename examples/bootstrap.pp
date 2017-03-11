@@ -16,7 +16,10 @@ package { 'postgresql94-contrib':
 }
 
 class { 'puppetdb::server':
-  manage_firewall => false,
+  listen_address         => '0.0.0.0',
+  listen_port            => '8080',
+  manage_firewall        => false,
+# database_max_pool_size => 8,
 }
 
 postgresql::server::extension { 'pg_trgm':
