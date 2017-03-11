@@ -1,3 +1,6 @@
+#
+# Forge modules
+#
 forge 'http://forge.puppetlabs.com'
 
 mod 'gentoo/portage', '2.3.0'
@@ -23,7 +26,9 @@ mod 'puppetlabs/stdlib', '4.15.0'
 mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'stahnma/epel', '1.2.2'
 mod 'theforeman/puppet', '7.0.1'
-
+#
+# Github modules
+#
 mod 'mcollective',
   :git    => 'https://github.com/vchepkov/puppet-mcollective.git',
   :branch => 'development'
