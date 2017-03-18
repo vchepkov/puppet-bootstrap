@@ -5,7 +5,8 @@ class bootstrap::master (
 ) {
 
   class { 'r10k':
-    remote => $control_repo,
+    remote   => $control_repo,
+    cachedir => "${facts['puppet_vardir']}/r10k",
   }
 
   class { 'puppetdb::database::postgresql':
