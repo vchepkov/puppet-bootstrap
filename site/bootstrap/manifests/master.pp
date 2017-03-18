@@ -35,6 +35,7 @@ class bootstrap::master (
     puppetmaster                  => $puppet_master,
     server                        => true,
     autosign                      => true,
+    environment                   => 'production',
     server_foreman                => false,
     server_puppetdb_host          => $puppet_master,
     server_reports                => 'puppetdb',
