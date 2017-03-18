@@ -1,6 +1,6 @@
 Bootstrap of Puppet Server
   - puppetserver
-  - hiera (deep_merge,eyaml)
+  - hiera 5 (eyaml, gpg)
   - puppetdb
   - puppetboard
   - mcollective
