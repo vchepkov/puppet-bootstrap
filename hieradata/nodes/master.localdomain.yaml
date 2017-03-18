@@ -2,6 +2,7 @@
 classes:
   - mcollective::middleware
   - mcollective::client
+  - bootstrap::master
   - bootstrap::dashboard
   - bootstrap::hiera
 
