@@ -5,6 +5,7 @@ classes:
   - bootstrap::master
   - bootstrap::dashboard
   - bootstrap::hiera
+  - bootstrap::r10k
 
 mcollective::client_password: 'ykMofyxshgeNkojtxz17'
 

@@ -1,13 +1,7 @@
 # Configure puppet master
 class bootstrap::master (
   String $puppet_master = 'master.localdomain',
-  String $control_repo  = 'https://github.com/vchepkov/puppet-bootstrap.git',
 ) {
-
-  class { 'r10k':
-    remote   => $control_repo,
-    cachedir => "${facts['puppet_vardir']}/r10k",
-  }
 
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
