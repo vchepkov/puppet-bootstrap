@@ -58,28 +58,3 @@ exec { 'puppetdb ssl-setup':
 
 # Don't start agent until master is configured
 Service['puppetserver'] -> Service['puppet']
-
-# Workaround for geppetto
-$hiera_gem_provider = 'puppetserver_gem'
-
-class { 'hiera':
-  hierarchy          => [
-    'nodes/%{clientcert}',
-    'roles/%{role}',
-    'locations/%{location}',
-    'groups/%{group}',
-    'tiers/%{tier}',
-    'common/global',
-  ],
-  master_service     => 'puppetserver',
-  provider           => $hiera_gem_provider,
-  manage_package     => true,
-  puppet_conf_manage => false,
-  hiera_yaml         => "${::settings::confdir}/hiera.yaml",
-  keysdir            => "${::settings::codedir}/keys",
-  merge_behavior     => 'deeper',
-  eyaml              => true,
-  eyaml_gpg          => true,
-  create_keys        => true,
-  create_symlink     => false,
-}

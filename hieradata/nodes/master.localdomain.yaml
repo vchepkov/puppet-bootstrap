@@ -3,7 +3,7 @@ classes:
   - mcollective::middleware
   - mcollective::client
   - bootstrap::dashboard
-  - bootstrap::eyaml
+  - bootstrap::hiera
 
 mcollective::client_password: 'ykMofyxshgeNkojtxz17'
 

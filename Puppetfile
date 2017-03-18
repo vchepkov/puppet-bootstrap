@@ -5,7 +5,6 @@ forge 'http://forge.puppetlabs.com'
 
 mod 'gentoo/portage', '2.3.0'
 mod 'puppet/extlib', '1.1.0'
-mod 'puppet/hiera', '2.4.0'
 mod 'puppet/make', '1.1.0'
 mod 'puppet/puppetboard', '2.9.0'
 mod 'puppet/r10k', '5.0.0'

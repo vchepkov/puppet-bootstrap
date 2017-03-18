@@ -1,0 +1,21 @@
+---
+version: 5
+defaults:
+  datadir: hieradata
+  data_hash: yaml_data
+hierarchy:
+  - name: "Node secrets"
+    paths: 
+      - "nodes/%{clientcert}.eyaml"
+      - "common/global.eyaml"
+    lookup_key: eyaml_lookup_key
+    options:
+      pkcs7_private_key: /etc/puppetlabs/code/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/code/keys/public_key.pkcs7.pem
+      gpg_gnupghome: /etc/puppetlabs/code/keys/gpg
+  - name: "Nodes data"
+    paths:
+      - "nodes/%{clientcert}.yaml"
+      - "roles/%{role}.yaml"
+      - "locations/%{location}.yaml"
+      - "common/global.yaml"
