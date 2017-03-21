@@ -21,7 +21,7 @@ class bootstrap::dashboard {
     basedir           => '/opt/puppetboard',
     enable_catalog    => true,
     manage_virtualenv => true,
-    revision          => 'v0.2.1', # https://github.com/voxpupuli/puppetboard
+    revision          => 'v0.2.2', # https://github.com/voxpupuli/puppetboard
     reports_count     => 20,
   }
 
