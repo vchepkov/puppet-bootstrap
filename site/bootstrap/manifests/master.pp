@@ -58,4 +58,13 @@ class bootstrap::master (
 # Don't start agent until master is configured
   Service['puppetserver'] -> Service['puppet']
 
+  file { '/etc/systemd/system/puppet.service.d':
+    ensure => directory,
+  }
+
+  file { '/etc/systemd/system/puppet.service.d/local.conf':
+    ensure => file,
+    source => "puppet:///modules/${module_name}/puppet-systemd.conf",
+  }
+
 }
