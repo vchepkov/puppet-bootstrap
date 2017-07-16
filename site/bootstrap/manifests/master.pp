@@ -5,11 +5,11 @@ class bootstrap::master (
 
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
-    postgres_version    => '9.4',
+    postgres_version    => '9.6',
     before              => Class['puppetdb::server'],
   }
 
-  package { 'postgresql94-contrib':
+  package { 'postgresql96-contrib':
     require => Class['puppetdb::database::postgresql'],
     before  => Class['puppetdb::server'],
   }
@@ -22,7 +22,7 @@ class bootstrap::master (
 
   postgresql::server::extension { 'pg_trgm':
     database => 'puppetdb',
-    require  => Package['postgresql94-contrib'],
+    require  => Package['postgresql96-contrib'],
     before   => Service['puppetdb'];
   }
 
