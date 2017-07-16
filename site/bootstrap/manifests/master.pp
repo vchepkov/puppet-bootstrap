@@ -9,21 +9,10 @@ class bootstrap::master (
     before              => Class['puppetdb::server'],
   }
 
-  package { 'postgresql96-contrib':
-    require => Class['puppetdb::database::postgresql'],
-    before  => Class['puppetdb::server'],
-  }
-
   class { 'puppetdb::server':
     listen_address         => '0.0.0.0',
     listen_port            => '8080',
     manage_firewall        => false,
-  }
-
-  postgresql::server::extension { 'pg_trgm':
-    database => 'puppetdb',
-    require  => Package['postgresql96-contrib'],
-    before   => Service['puppetdb'];
   }
 
   class { 'puppet':
