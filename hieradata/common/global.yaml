@@ -11,8 +11,6 @@ mco_plugins:
   'service': {}
   'shell': {}
 
-mcollective::etcdir: /etc/puppetlabs/mcollective
-
 mcollective::facts::cronjob::run_every: 15
 mcollective::hosts:
   - master.localdomain
