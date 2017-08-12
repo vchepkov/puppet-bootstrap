@@ -3,7 +3,7 @@ class bootstrap::hiera (
   String $server_service = 'puppetserver',
 ){
 
-  $build_packages = ['bzip2','gcc','libgpg-error-devel','libassuan-devel']
+  $build_packages = ['bzip2','gcc','make']
   ensure_packages($build_packages)
 
   $hiera_server_gems = ['hiera-eyaml','hiera-eyaml-gpg','ruby_gpg']
