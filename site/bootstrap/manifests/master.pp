@@ -14,6 +14,8 @@ class bootstrap::master (
     listen_address         => '0.0.0.0',
     listen_port            => '8080',
     manage_firewall        => false,
+    node_ttl               => '0',
+    node_purge_ttl         => '0',
   }
 
   class { 'puppet':
