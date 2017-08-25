@@ -14,10 +14,10 @@ mod 'puppetlabs/ntp', '6.2.0'
 mod 'puppetlabs/postgresql', '5.1.0'
 mod 'puppetlabs/puppetdb', '6.0.1'
 mod 'puppetlabs/puppetserver_gem', '1.0.0'
-mod 'puppetlabs/stdlib', '4.18.0'
+mod 'puppetlabs/stdlib', '4.19.0'
 mod 'puppetlabs/vcsrepo', '2.0.0'
 mod 'stahnma/epel', '1.2.2'
-mod 'theforeman/puppet', '8.0.1'
+mod 'theforeman/puppet', '8.0.2'
 #
 # Github modules
 #
