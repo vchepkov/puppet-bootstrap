@@ -21,9 +21,6 @@ mod 'theforeman/puppet', '8.0.3'
 #
 # Github modules
 #
-mod 'mcollective',
-  :git    => 'https://github.com/vchepkov/puppet-mcollective.git',
-  :branch => 'development'
 mod 'python',
   :git    => 'https://github.com/vchepkov/puppet-python.git',
   :branch => 'setuptools34'

@@ -1,7 +1,7 @@
 # Configure puppet master
 class bootstrap::master (
   String $puppet_master = 'master.localdomain',
-  String $environment   = 'production',
+  String $environment   = 'choria',
 ) {
 
   class { 'puppetdb::database::postgresql':

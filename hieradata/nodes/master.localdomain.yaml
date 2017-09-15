@@ -1,15 +1,6 @@
 ---
 classes:
-  - mcollective::middleware
-  - mcollective::client
   - bootstrap::master
   - bootstrap::dashboard
   - bootstrap::hiera
   - bootstrap::r10k
-
-mcollective::client_password: 'ykMofyxshgeNkojtxz17'
-
-mcollective::middleware::keystore_password: 'QBbLKb6KFljeQdYfTGALJEqb7XRZGEsAyOqg7wxt'
-mcollective::middleware::truststore_password: 'NfkwNywzsatpbFH446fDb9kufQ/WyWWh2QE06R8C'
-
-mcollective::plugin::clients: "%{alias('mco_plugins')}"

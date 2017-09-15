@@ -46,7 +46,7 @@ Vagrant.configure(2) do |config|
       mkdir -p /var/tmp/modules
       /opt/puppetlabs/bin/puppet module install --modulepath=/var/tmp/modules puppet-r10k
       /opt/puppetlabs/bin/puppet apply --modulepath=/var/tmp/modules -e "class{'r10k':remote=>'https://github.com/vchepkov/puppet-bootstrap.git'}"
-      r10k deploy environment production -vp
+      r10k deploy environment choria -vp
       /vagrant/examples/bootstrap.sh
     SHELL
   end
