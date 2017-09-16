@@ -3,6 +3,8 @@
 #
 forge 'http://forge.puppetlabs.com'
 
+mod 'camptocamp/systemd', '0.4.0'
+mod 'choria/nats', '0.0.12'
 mod 'puppet/puppetboard', '2.9.0'
 mod 'puppet/r10k', '6.1.0'
 mod 'puppetlabs/apache', '2.1.0'
