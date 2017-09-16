@@ -1,5 +1,15 @@
 ---
-
 classes:
   - git
+  - mcollective
   - ntp
+
+mcollective_choria::config:
+  use_srv_records: false
+  puppetserver_host: "master.localdomain"
+  puppetserver_port: 8140
+  puppetca_host: "master.localdomain"
+  puppetca_port: 8140
+  puppetdb_host: "master.localdomain"
+  puppetdb_port: 8081
+  middleware_hosts: "master.localdomain:4222"

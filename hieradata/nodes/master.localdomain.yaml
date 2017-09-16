@@ -5,3 +5,5 @@ classes:
   - bootstrap::hiera
   - bootstrap::r10k
   - nats
+
+mcollective::client: true
