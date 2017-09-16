@@ -4,7 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>apache</project>
-		<project>mcollective</project>
 		<project>postgresql</project>
 		<project>puppet_gem</project>
 		<project>puppetboard</project>

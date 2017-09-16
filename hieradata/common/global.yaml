@@ -1,23 +1,23 @@
 ---
-
 classes:
   - git
+  - mcollective
   - ntp
-  - mcollective::server
 
-mco_plugins:
-  'puppet': {}
-  'package': {}
-  'service': {}
-  'shell': {}
+mcollective_choria::config:
+  use_srv_records: false
+  puppetserver_host: "master.localdomain"
+  puppetserver_port: 8140
+  puppetca_host: "master.localdomain"
+  puppetca_port: 8140
+  puppetdb_host: "master.localdomain"
+  puppetdb_port: 8081
+  middleware_hosts: "master.localdomain:4222"
 
-mcollective::facts::cronjob::run_every: 15
-mcollective::hosts:
-  - master.localdomain
-mcollective::plugin::agents: "%{alias('mco_plugins')}"
-
-mcollective::connector_ssl: true
-mcollective::connector_ssl_type: trusted
-
-mcollective::psk_key: '09cicjWvwqdyrizUzcsj'
-mcollective::server_password: 'tnhi2qbyo1HpeXqyngaa'
+# setup vagrant user as an administrator
+mcollective::site_policies:
+  - action: "allow"
+    callers: "choria=vagrant.mcollective"
+    actions: "*"
+    facts: "*"
+    classes: "*"
