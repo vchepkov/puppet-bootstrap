@@ -1,6 +1,7 @@
 # Configure puppet master
 class bootstrap::master (
   String $puppet_master = 'master.localdomain',
+  String $environment   = 'puppet5',
 ) {
 
   class { 'puppetdb::database::postgresql':
@@ -13,13 +14,15 @@ class bootstrap::master (
     listen_address         => '0.0.0.0',
     listen_port            => '8080',
     manage_firewall        => false,
+    node_ttl               => '0s',
+    node_purge_ttl         => '0s',
   }
 
   class { 'puppet':
     puppetmaster                  => $puppet_master,
     server                        => true,
     autosign                      => true,
-    environment                   => 'puppet5',
+    environment                   => $environment,
     server_foreman                => false,
     server_puppetdb_host          => $puppet_master,
     server_reports                => 'puppetdb',

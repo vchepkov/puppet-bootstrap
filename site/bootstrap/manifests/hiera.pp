@@ -3,7 +3,8 @@ class bootstrap::hiera (
   String $server_service = 'puppetserver',
 ){
 
-  ensure_packages(['bzip2','gcc'])
+  $build_packages = ['bzip2','gcc','make']
+  ensure_packages($build_packages)
 
   $hiera_server_gems = ['hiera-eyaml','hiera-eyaml-gpg','ruby_gpg']
   $hiera_agent_gems  = ['hiera-eyaml','hiera-eyaml-gpg','gpgme']
@@ -14,7 +15,7 @@ class bootstrap::hiera (
       ensure   => installed,
       name     => $gem,
       provider => 'puppet_gem',
-      require  => Package['bzip2','gcc'],
+      require  => Package[$build_packages],
     }
 
   }

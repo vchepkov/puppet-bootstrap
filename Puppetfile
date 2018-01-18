@@ -3,8 +3,16 @@
 #
 forge 'http://forge.puppetlabs.com'
 
+mod 'camptocamp/systemd', '1.1.1'
+mod 'choria/mcollective', '0.3.0'
+mod 'choria/mcollective_agent_filemgr', '1.1.0'
+mod 'choria/mcollective_agent_package', '4.5.0'
+mod 'choria/mcollective_agent_puppet', '1.13.2'
+mod 'choria/mcollective_agent_service', '3.2.0'
+mod 'choria/mcollective_choria', '0.5.0'
+mod 'choria/mcollective_util_actionpolicy', '2.2.0'
+mod 'choria/nats', '0.2.0'
 mod 'puppet/extlib', '2.0.1'
-mod 'puppet/make', '2.0.0'
 mod 'puppet/puppetboard', '4.0.0'
 mod 'puppet/r10k', '6.3.2'
 mod 'puppetlabs/apache', '2.3.0'
@@ -27,9 +35,6 @@ mod 'theforeman/puppet', '8.1.0'
 #
 # Github modules
 #
-mod 'mcollective',
-  :git    => 'https://github.com/vchepkov/puppet-mcollective.git',
-  :branch => 'development'
 mod 'python',
   :git    => 'https://github.com/vchepkov/puppet-python.git',
   :branch => 'setuptools34'
