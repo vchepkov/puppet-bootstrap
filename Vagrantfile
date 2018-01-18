@@ -67,6 +67,7 @@ Vagrant.configure(2) do |config|
       yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain
+      /opt/puppetlabs/bin/puppet config set environment puppet5 --section agent
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL
   end
