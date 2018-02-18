@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version ">= 1.9.2"
+Vagrant.require_version ">= 2.0.0"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -20,7 +20,13 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box      = "puppetlabs/centos-7.2-64-nocm"
+  config.vm.box      = "centos/7"
+
+  config.vm.provider :virtualbox do |vb|
+    vb.auto_nat_dns_proxy = false
+    vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
+    vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
+  end
 
   # Master
   config.vm.define "master", primary: true do |master|
