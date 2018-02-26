@@ -6,7 +6,7 @@ class bootstrap::master (
 
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
-    postgres_version    => '9.4',
+    postgres_version    => '9.6',
     before              => Class['puppetdb::server'],
   }
 
