@@ -6,7 +6,7 @@ defaults:
 hierarchy:
   - name: "Node secrets"
     paths: 
-      - "nodes/%{clientcert}.eyaml"
+      - "nodes/%{trusted.certname}.eyaml"
       - "common/global.eyaml"
     lookup_key: eyaml_lookup_key
     options:
@@ -15,7 +15,5 @@ hierarchy:
       gpg_gnupghome: /etc/puppetlabs/code/keys/gpg
   - name: "Nodes data"
     paths:
-      - "nodes/%{clientcert}.yaml"
-      - "roles/%{role}.yaml"
-      - "locations/%{location}.yaml"
+      - "nodes/%{trusted.certname}.yaml"
       - "common/global.yaml"
