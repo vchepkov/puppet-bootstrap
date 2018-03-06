@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-Vagrant.require_version ">= 2.0.0"
+Vagrant.require_version ">= 1.9.2"
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -11,6 +11,8 @@ Vagrant.configure(2) do |config|
   # The most common configuration options are documented and commented below.
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
+
+  vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
   unless Vagrant.has_plugin?("vagrant-vbguest")
     raise 'vagrant-vbguest plugin is not installed!'
@@ -51,8 +53,9 @@ Vagrant.configure(2) do |config|
       mkdir -p /var/tmp/modules
       /opt/puppetlabs/bin/puppet module install --modulepath=/var/tmp/modules puppet-r10k
       /opt/puppetlabs/bin/puppet apply --modulepath=/var/tmp/modules -e "class{'r10k':remote=>'https://github.com/vchepkov/puppet-bootstrap.git'}"
-      r10k deploy environment production -vp
-      /vagrant/examples/bootstrap.sh
+      r10k deploy environment #{vagrant_branch} -vp
+      /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
+      /vagrant/examples/bootstrap.sh --environment #{vagrant_branch}
     SHELL
   end
 
@@ -73,6 +76,7 @@ Vagrant.configure(2) do |config|
       yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain
+      /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL
   end
