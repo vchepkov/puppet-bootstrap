@@ -54,7 +54,10 @@ Vagrant.configure(2) do |config|
       /opt/puppetlabs/bin/puppet module install --modulepath=/var/tmp/modules puppet-r10k
       /opt/puppetlabs/bin/puppet apply --modulepath=/var/tmp/modules -e "class{'r10k':remote=>'https://github.com/vchepkov/puppet-bootstrap.git'}"
       r10k deploy environment #{vagrant_branch} -vp
-      /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
+      # set $puppet::params::environment
+      mkdir -p /etc/puppetlabs/facter/facts.d
+      echo environment=#{vagrant_branch} > /etc/puppetlabs/facter/facts.d/vagrant.txt
+      #
       /vagrant/examples/bootstrap.sh --environment #{vagrant_branch}
     SHELL
   end
