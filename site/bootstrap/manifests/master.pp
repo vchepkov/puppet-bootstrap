@@ -48,4 +48,10 @@ class bootstrap::master (
     source => "puppet:///modules/${module_name}/puppet-systemd.conf",
   }
 
+  # workaround for choria expecting puppet in PATH
+  file { '/usr/bin/puppet':
+    ensure  => 'link',
+    target  => '/opt/puppetlabs/puppet/bin/puppet',
+    require => Class['puppet'],
+  }
 }

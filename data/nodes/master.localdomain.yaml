@@ -5,7 +5,9 @@ classes:
   - bootstrap::dashboard
   - bootstrap::hiera
   - bootstrap::r10k
-  - nats
+  - choria::broker
+
+choria::manage_package_repo: true
 
 bootstrap::master::autosign: true
 # Workaround for theforeman-puppet module insisting settting environment
