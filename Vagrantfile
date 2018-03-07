@@ -30,6 +30,8 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
   end
 
+  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+
   # Master
   config.vm.define "master", primary: true do |master|
     master.vm.hostname = "master.localdomain"
@@ -37,6 +39,7 @@ Vagrant.configure(2) do |config|
     master.vm.network "forwarded_port", guest: 80,   host: 8000
     master.vm.network "forwarded_port", guest: 8080, host: 8080
     master.vm.network "forwarded_port", guest: 8140, host: 8140
+
 
     master.vm.provider "virtualbox" do |vb|
       vb.name   = "master"
