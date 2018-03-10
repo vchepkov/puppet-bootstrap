@@ -7,4 +7,7 @@ classes:
   - bootstrap::r10k
   - nats
 
+# Workaround for theforeman-puppet module insisting settting environment
+bootstrap::master::environment: "%{server_facts.environment}"
+
 mcollective::client: true

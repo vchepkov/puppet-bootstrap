@@ -2,4 +2,4 @@
 File { backup => false }
 
 # classify nodes via hiera
-include lookup('classes', Array[String], 'unique', [])
+contain lookup('classes', Array[String], 'unique', [])

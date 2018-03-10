@@ -1,6 +1,7 @@
 # Configure puppet master
 class bootstrap::master (
-  String $puppet_master = 'master.localdomain',
+  String $puppet_master         = 'master.localdomain',
+  Optional[String] $environment = undef,
 ) {
 
   class { 'puppetdb::database::postgresql':
@@ -20,6 +21,7 @@ class bootstrap::master (
   class { 'puppet':
     puppetmaster                  => $puppet_master,
     server                        => true,
+    environment                   => $environment,
     autosign                      => true,
     server_foreman                => false,
     server_puppetdb_host          => $puppet_master,
@@ -34,7 +36,8 @@ class bootstrap::master (
     show_diff                     => true,
     additional_settings           => {
       'strict' => 'off',
-                                     },
+      'color'  => 'false',
+    },
   }
 
 # Need to populate ssl directory for PuppetDB
