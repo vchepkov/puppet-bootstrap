@@ -1,7 +1,7 @@
 ---
 classes:
   - bootstrap::master
-  - bootstrap::mco_vagrant
+  - bootstrap::mco
   - bootstrap::dashboard
   - bootstrap::hiera
   - bootstrap::r10k

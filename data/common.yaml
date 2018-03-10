@@ -1,0 +1,8 @@
+---
+lookup_options:
+  bootstrap::mco::admins:
+    merge: unique
+
+classes:
+  - git
+  - ntp
