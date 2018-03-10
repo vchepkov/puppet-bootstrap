@@ -45,7 +45,7 @@ Vagrant.configure(2) do |config|
       vb.cpus   = "2"
     end
 
-    master.vm.provision "shell", run: "once", inline: <<-SHELL
+    master.vm.provision "shell", run: "once", env: {"PUPPET_ENV" => vagrant_branch}, inline: <<-SHELL
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
