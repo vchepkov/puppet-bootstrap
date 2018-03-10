@@ -1,5 +1,6 @@
-# bootstrap mco client
-class bootstrap::mco {
+# Configure MCO admin
+# TODO: convert into define
+class bootstrap::mco_vagrant {
 
   # matches policy in hiera
   $user = 'vagrant'
