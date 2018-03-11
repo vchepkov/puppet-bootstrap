@@ -1,6 +1,7 @@
 # Configure puppet master
 class bootstrap::master (
   String $puppet_master         = 'master.localdomain',
+  Boolean $autosign             = false,
   Optional[String] $environment = undef,
 ) {
 
@@ -22,7 +23,7 @@ class bootstrap::master (
     puppetmaster                  => $puppet_master,
     server                        => true,
     environment                   => $environment,
-    autosign                      => true,
+    autosign                      => $autosign,
     server_foreman                => false,
     server_puppetdb_host          => $puppet_master,
     server_reports                => 'puppetdb',
@@ -30,8 +31,6 @@ class bootstrap::master (
     server_external_nodes         => '',
     server_environments           => [],
     server_common_modules_path    => [],
-    server_jvm_min_heap_size      => '512m',
-    server_jvm_max_heap_size      => '512m',
     hiera_config                  => "${::settings::confdir}/hiera.yaml",
     show_diff                     => true,
     additional_settings           => {

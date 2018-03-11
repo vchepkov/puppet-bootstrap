@@ -7,9 +7,12 @@ classes:
   - bootstrap::r10k
   - nats
 
+bootstrap::master::autosign: true
 # Workaround for theforeman-puppet module insisting settting environment
 bootstrap::master::environment: "%{server_facts.environment}"
-
 bootstrap::r10k::control_repo: 'file:///vagrant/'
 
 mcollective::client: true
+
+puppet::server_jvm_min_heap_size: '512m'
+puppet::server_jvm_max_heap_size: '512m'
