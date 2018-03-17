@@ -11,6 +11,7 @@
 		<project>puppetserver_gem</project>
 		<project>r10k</project>
 		<project>stdlib</project>
+		<project>systemd</project>
 		<project>theforeman-puppet</project>
 	</projects>
 	<buildSpec>
