@@ -34,8 +34,9 @@ class bootstrap::master (
     hiera_config                  => "${::settings::confdir}/hiera.yaml",
     show_diff                     => true,
     additional_settings           => {
-      'strict' => 'off',
-      'color'  => 'false',
+      'color'            => 'false',
+      'strict'           => 'off',
+      'strict_variables' => 'true',
     },
   }
 
