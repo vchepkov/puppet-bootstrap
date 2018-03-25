@@ -17,3 +17,6 @@ mcollective::client: true
 
 puppet::server_jvm_min_heap_size: '512m'
 puppet::server_jvm_max_heap_size: '512m'
+
+puppetdb::server::node_ttl: '1d'
+puppetdb::server::node_purge_ttl: '7d'
