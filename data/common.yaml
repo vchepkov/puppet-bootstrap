@@ -4,5 +4,4 @@ lookup_options:
     merge: unique
 
 classes:
-  - git
-  - ntp
+  - bootstrap::agent

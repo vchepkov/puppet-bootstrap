@@ -4,6 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>apache</project>
+		<project>git</project>
+		<project>ntp</project>
 		<project>postgresql</project>
 		<project>puppet_gem</project>
 		<project>puppetboard</project>
