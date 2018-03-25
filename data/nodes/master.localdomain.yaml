@@ -12,7 +12,6 @@ choria::manage_package_repo: true
 bootstrap::master::autosign: true
 # Workaround for theforeman-puppet module insisting settting environment
 bootstrap::master::environment: "%{server_facts.environment}"
-bootstrap::r10k::control_repo: 'file:///vagrant/'
 
 mcollective::client: true
 
