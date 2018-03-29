@@ -49,9 +49,7 @@ Vagrant.configure(2) do |config|
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
-      # avoid 5.5 for now
-      yum -y install yum-plugin-versionlock puppet-agent-5.4.\*
-      yum versionlock puppet-agent-5.4.\*
+      yum -y install puppet-agent
 
       /opt/puppetlabs/bin/puppet module install \
       --environment production --modulepath=/var/tmp/modules \
@@ -79,9 +77,7 @@ Vagrant.configure(2) do |config|
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
-      # avoid 5.5 for now
-      yum -y install yum-plugin-versionlock puppet-agent-5.4.\*
-      yum versionlock puppet-agent-5.4.\*
+      yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain --section agent
       /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
