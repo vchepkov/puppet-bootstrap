@@ -22,6 +22,7 @@ class bootstrap::master (
     server                        => true,
     environment                   => $environment,
     autosign                      => $autosign,
+    server_check_for_updates      => false,
     server_foreman                => false,
     server_puppetdb_host          => $puppet_master,
     server_reports                => 'puppetdb',
