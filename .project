@@ -4,6 +4,7 @@
 	<comment></comment>
 	<projects>
 		<project>apache</project>
+		<project>concat</project>
 		<project>git</project>
 		<project>ntp</project>
 		<project>postgresql</project>

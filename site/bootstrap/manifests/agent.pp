@@ -5,7 +5,7 @@ class bootstrap::agent {
 
   # Conflicts with ntpd
   package { 'chrony':
-    ensure => 'absent',
+    ensure => 'purged',
     before => Class['ntp'],
   }
 }
