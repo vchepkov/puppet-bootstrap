@@ -37,4 +37,4 @@ mod 'theforeman/puppet', '8.2.0'
 #
 mod 'python',
   :git    => 'https://github.com/vchepkov/puppet-python.git',
-  :branch => 'setuptools34'
+  :branch => 'development'
