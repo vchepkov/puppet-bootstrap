@@ -31,10 +31,5 @@ mod 'puppetlabs/ruby', '1.0.0'
 mod 'puppetlabs/stdlib', '4.25.1'
 mod 'puppetlabs/vcsrepo', '1.5.0'
 mod 'stahnma/epel', '1.3.0'
+mod 'stankevich/python', '1.19.0'
 mod 'theforeman/puppet', '8.2.0'
-#
-# Github modules
-#
-mod 'python',
-  :git    => 'https://github.com/vchepkov/puppet-python.git',
-  :branch => 'development'
