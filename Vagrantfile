@@ -57,7 +57,7 @@ Vagrant.configure(2) do |config|
 
       /opt/puppetlabs/bin/puppet apply \
       --environment production --modulepath=/var/tmp/modules \
-      -e "class { 'r10k': remote => 'file:///vagrant/' }"
+      -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
       /vagrant/examples/bootstrap.sh
     SHELL
