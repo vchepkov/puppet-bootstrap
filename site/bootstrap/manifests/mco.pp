@@ -3,7 +3,7 @@ class bootstrap::mco (
   Array[String] $admins = [],
 ){
   $admins.each | $user | {
-    exec { 'request mco certificate':
+    exec { "request mco certificate for ${user}":
       command     => '/opt/puppetlabs/puppet/bin/mco choria request_cert',
       creates     => "/home/${user}/.puppetlabs/etc/puppet/ssl/certs/${user}.mcollective.pem",
       user        => $user,

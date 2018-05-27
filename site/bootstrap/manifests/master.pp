@@ -51,6 +51,5 @@ class bootstrap::master (
   file { '/usr/bin/puppet':
     ensure  => 'link',
     target  => '/opt/puppetlabs/puppet/bin/puppet',
-    require => Class['puppet'],
   }
 }
