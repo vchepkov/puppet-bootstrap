@@ -2,6 +2,7 @@
 class bootstrap::master (
   String $puppet_master         = 'master.localdomain',
   Boolean $autosign             = false,
+  Boolean $jruby9k              = true,
   Optional[String] $environment = undef,
 ) {
 
@@ -24,6 +25,7 @@ class bootstrap::master (
     autosign                      => $autosign,
     server_check_for_updates      => false,
     server_foreman                => false,
+    server_puppetserver_jruby9k   => $jruby9k,
     server_puppetdb_host          => $puppet_master,
     server_reports                => 'puppetdb',
     server_storeconfigs_backend   => 'puppetdb',
@@ -39,7 +41,7 @@ class bootstrap::master (
     },
   }
 
-# Don't start agent until master is configured
+  # Don't start agent until master is configured
   Service['puppetserver'] -> Service['puppet']
 
   systemd::dropin_file { 'local.conf':
