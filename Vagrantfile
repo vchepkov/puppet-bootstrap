@@ -48,7 +48,7 @@ Vagrant.configure(2) do |config|
     master.vm.provision "shell", run: "once", env: {"PUPPET_ENV" => vagrant_branch}, inline: <<-SHELL
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
+      yum -y install http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
       yum -y install puppet-agent
 
       /opt/puppetlabs/bin/puppet module install \
@@ -76,7 +76,7 @@ Vagrant.configure(2) do |config|
     node.vm.provision "shell", run: "once", inline: <<-SHELL
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet/puppet-release-el-7.noarch.rpm
+      yum -y install http://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm
       yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain --section agent
