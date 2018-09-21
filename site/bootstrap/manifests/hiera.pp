@@ -6,8 +6,8 @@ class bootstrap::hiera (
   $build_packages = ['bzip2','gcc','make']
   ensure_packages($build_packages)
 
-  $hiera_server_gems = ['hiera-eyaml','hiera-eyaml-gpg','ruby_gpg']
-  $hiera_agent_gems  = ['hiera-eyaml','hiera-eyaml-gpg','gpgme']
+  $hiera_server_gems = ['hiera-eyaml']
+  $hiera_agent_gems  = ['hiera-eyaml']
 
   $hiera_agent_gems.each | $gem | {
 
