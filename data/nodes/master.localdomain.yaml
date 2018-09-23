@@ -9,8 +9,7 @@ classes:
 
 choria::manage_package_repo: true
 
-bootstrap::master::autosign: true
-# Workaround for theforeman-puppet module insisting settting environment
+# Workaround for theforeman/puppet module insisting settting environment
 bootstrap::master::environment: "%{server_facts.environment}"
 
 mcollective::client: true

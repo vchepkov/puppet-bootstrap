@@ -1,7 +1,7 @@
 # Configure puppet master
 class bootstrap::master (
   String $puppet_master         = 'master.localdomain',
-  Boolean $autosign             = false,
+  Boolean $autosign             = true,
   Boolean $jruby9k              = true,
   Optional[String] $environment = undef,
 ) {
@@ -29,6 +29,7 @@ class bootstrap::master (
     server_puppetdb_host          => $puppet_master,
     server_reports                => 'puppetdb',
     server_storeconfigs_backend   => 'puppetdb',
+    server_strict_variables       => true,
     server_external_nodes         => '',
     server_environments           => [],
     server_common_modules_path    => [],
@@ -37,7 +38,6 @@ class bootstrap::master (
     additional_settings           => {
       'color'            => 'false',
       'strict'           => 'off',
-      'strict_variables' => 'true',
     },
   }
 
