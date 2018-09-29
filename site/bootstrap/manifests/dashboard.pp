@@ -30,6 +30,9 @@ class bootstrap::dashboard {
     manage_virtualenv => true,
     revision          => 'v0.3.0', # https://github.com/voxpupuli/puppetboard
     reports_count     => 20,
+    extra_settings    => {
+      'DAILY_REPORTS_CHART_DAYS' => '10',
+    },
   }
 
   class { 'puppetboard::apache::conf':
