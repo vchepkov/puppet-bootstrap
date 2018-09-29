@@ -13,9 +13,8 @@ class bootstrap::master (
   }
 
   class { 'puppetdb::server':
-    listen_address         => '0.0.0.0',
-    listen_port            => '8080',
-    manage_firewall        => false,
+    listen_port     => '8080',
+    manage_firewall => false,
   }
 
   class { 'puppet':
