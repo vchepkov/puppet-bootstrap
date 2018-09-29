@@ -18,25 +18,25 @@ class bootstrap::master (
   }
 
   class { 'puppet':
-    puppetmaster                  => $puppet_master,
-    server                        => true,
-    environment                   => $environment,
-    autosign                      => $autosign,
-    server_check_for_updates      => false,
-    server_foreman                => false,
-    server_puppetserver_jruby9k   => $jruby9k,
-    server_puppetdb_host          => $puppet_master,
-    server_reports                => 'puppetdb',
-    server_storeconfigs_backend   => 'puppetdb',
-    server_strict_variables       => true,
-    server_external_nodes         => '',
-    server_environments           => [],
-    server_common_modules_path    => [],
-    hiera_config                  => "${::settings::confdir}/hiera.yaml",
-    show_diff                     => true,
-    additional_settings           => {
-      'color'            => 'false',
-      'strict'           => 'off',
+    puppetmaster                => $puppet_master,
+    server                      => true,
+    environment                 => $environment,
+    autosign                    => $autosign,
+    server_check_for_updates    => false,
+    server_foreman              => false,
+    server_puppetserver_jruby9k => $jruby9k,
+    server_puppetdb_host        => $puppet_master,
+    server_reports              => 'puppetdb',
+    server_storeconfigs_backend => 'puppetdb',
+    server_strict_variables     => true,
+    server_external_nodes       => '',
+    server_environments         => [],
+    server_common_modules_path  => [],
+    hiera_config                => "${settings::confdir}/hiera.yaml",
+    show_diff                   => true,
+    additional_settings         => {
+      'color'  => false,
+      'strict' => 'off',
     },
   }
 
@@ -50,7 +50,7 @@ class bootstrap::master (
 
   # workaround for choria expecting puppet in PATH
   file { '/usr/bin/puppet':
-    ensure  => 'link',
-    target  => '/opt/puppetlabs/puppet/bin/puppet',
+    ensure => 'link',
+    target => '/opt/puppetlabs/puppet/bin/puppet',
   }
 }

@@ -12,6 +12,10 @@ choria::manage_package_repo: true
 # Workaround for theforeman/puppet module insisting settting environment
 bootstrap::master::environment: "%{server_facts.environment}"
 
+# setup vagrant user as an administrator
+bootstrap::mco::admins:
+  - vagrant
+
 mcollective::client: true
 
 puppet::server_jvm_min_heap_size: '512m'

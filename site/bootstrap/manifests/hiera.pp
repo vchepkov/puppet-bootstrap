@@ -26,6 +26,7 @@ class bootstrap::hiera (
       ensure   => installed,
       name     => $gem,
       provider => 'puppetserver_gem',
+      require  => Package[$build_packages],
     }
 
     Service <| title == $server_service |> {
@@ -34,7 +35,7 @@ class bootstrap::hiera (
 
   }
 
-  file { $::settings::hiera_config:
+  file { $settings::hiera_config:
     ensure => file,
     owner  => 'root',
     group  => 'root',
@@ -43,27 +44,27 @@ class bootstrap::hiera (
   }
 
   Service <| title == $server_service |> {
-    subscribe +> File[$::settings::hiera_config],
+    subscribe +> File[$settings::hiera_config],
   }
 
   file { '/root/.eyaml':
     ensure => directory,
     owner  => 'root',
     group  => 'root',
-    mode   => '700',
+    mode   => '0700',
   }
 
   file { '/root/.eyaml/config.yaml':
     ensure  => file,
     owner   => 'root',
     group   => 'root',
-    mode    => '600',
+    mode    => '0600',
     content => template("${module_name}/eyaml.config.erb"),
   }
 
   file { '/opt/puppetlabs/bin/eyaml':
-    ensure  => link,
-    target  => '/opt/puppetlabs/puppet/bin/eyaml',
+    ensure => link,
+    target => '/opt/puppetlabs/puppet/bin/eyaml',
   }
 
 }

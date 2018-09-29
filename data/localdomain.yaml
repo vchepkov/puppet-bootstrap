@@ -15,10 +15,6 @@ mcollective_choria::config:
   puppetdb_port: 8081
   middleware_hosts: "master.localdomain:4222"
 
-# setup vagrant user as an administrator
-bootstrap::mco::admins:
-  - vagrant
-
 mcollective::site_policies:
   - action: "allow"
     callers: "choria=vagrant.mcollective"
