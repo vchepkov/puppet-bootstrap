@@ -13,8 +13,9 @@ class bootstrap::master (
   }
 
   class { 'puppetdb::server':
-    listen_port     => '8080',
-    manage_firewall => false,
+    listen_port             => '8080',
+    manage_firewall         => false,
+    disable_update_checking => true,
   }
 
   class { 'puppet':
@@ -25,6 +26,10 @@ class bootstrap::master (
     server_check_for_updates    => false,
     server_foreman              => false,
     server_puppetserver_jruby9k => $jruby9k,
+    server_ruby_load_paths      => [
+      '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby',
+      '/opt/puppetlabs/puppet/cache/lib'
+    ],
     server_puppetdb_host        => $puppet_master,
     server_reports              => 'puppetdb',
     server_storeconfigs_backend => 'puppetdb',
