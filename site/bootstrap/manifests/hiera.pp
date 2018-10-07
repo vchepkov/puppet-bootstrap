@@ -59,7 +59,7 @@ class bootstrap::hiera (
     owner   => 'root',
     group   => 'root',
     mode    => '0600',
-    content => template("${module_name}/eyaml.config.erb"),
+    content => epp("${module_name}/eyaml.config.epp"),
   }
 
   file { '/opt/puppetlabs/bin/eyaml':
