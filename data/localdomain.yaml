@@ -2,6 +2,10 @@
 classes:
   - mcollective
 
+choria::server_config:
+  plugin.choria.use_srv: false
+  plugin.choria.middleware_hosts: "master.localdomain:4222"
+
 mcollective::plugin_classes:
   - mcollective_agent_shell
 

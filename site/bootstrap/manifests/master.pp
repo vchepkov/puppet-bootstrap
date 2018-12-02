@@ -2,7 +2,6 @@
 class bootstrap::master (
   String $puppet_master         = 'master.localdomain',
   Boolean $autosign             = true,
-  Boolean $jruby9k              = true,
   Optional[String] $environment = undef,
 ) {
 
@@ -25,7 +24,6 @@ class bootstrap::master (
     autosign                    => $autosign,
     server_check_for_updates    => false,
     server_foreman              => false,
-    server_puppetserver_jruby9k => $jruby9k,
     server_ruby_load_paths      => [
       '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby',
       '/opt/puppetlabs/puppet/cache/lib'
