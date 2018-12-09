@@ -14,16 +14,10 @@ Vagrant.configure(2) do |config|
 
   vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
-  unless Vagrant.has_plugin?("vagrant-vbguest")
-    raise 'vagrant-vbguest plugin is not installed!'
-  end
-  config.vbguest.auto_update = true
-  config.vbguest.auto_reboot = true
-
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box      = "centos/7"
-  config.vm.synced_folder ".", "/vagrant", type: "virtualbox"
+  config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provider :virtualbox do |vb|
     vb.auto_nat_dns_proxy = false
