@@ -1,5 +1,7 @@
 # class to install puppet dashboard
-class bootstrap::dashboard {
+class bootstrap::dashboard (
+  Optional[String] $version = 'v0.3.0', # https://github.com/voxpupuli/puppetboard
+) {
 
   class { 'apache':
     server_tokens    => 'Prod',
@@ -28,7 +30,7 @@ class bootstrap::dashboard {
     basedir           => '/opt/puppetboard',
     enable_catalog    => true,
     manage_virtualenv => true,
-    revision          => 'v0.3.0', # https://github.com/voxpupuli/puppetboard
+    revision          => $version,
     reports_count     => 20,
     extra_settings    => {
       'DAILY_REPORTS_CHART_DAYS' => '10',
