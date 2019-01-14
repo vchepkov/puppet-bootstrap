@@ -35,7 +35,6 @@ class bootstrap::master (
     server_storeconfigs_backend => 'puppetdb',
     server_strict_variables     => true,
     server_external_nodes       => '',
-    server_environments         => [],
     server_common_modules_path  => [],
     hiera_config                => "${settings::confdir}/hiera.yaml",
     show_diff                   => true,
