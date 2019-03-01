@@ -3,7 +3,7 @@
 #
 forge 'http://forge.puppetlabs.com'
 
-mod 'camptocamp/systemd', '2.1.0'
+mod 'camptocamp/systemd', '2.2.0'
 mod 'choria/choria', '0.12.0'
 mod 'choria/mcollective', '0.9.0'
 mod 'choria/mcollective_agent_filemgr', '2.0.1'
