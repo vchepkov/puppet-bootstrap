@@ -4,9 +4,9 @@
 	<comment></comment>
 	<projects>
 		<project>apache</project>
+		<project>chrony</project>
 		<project>concat</project>
 		<project>git</project>
-		<project>ntp</project>
 		<project>postgresql</project>
 		<project>puppet</project>
 		<project>puppet_gem</project>
