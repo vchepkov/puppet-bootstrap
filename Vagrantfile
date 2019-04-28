@@ -47,6 +47,8 @@ Vagrant.configure(2) do |config|
       yum -y install http://yum.puppetlabs.com/puppet6/puppet6-release-el-7.noarch.rpm
       yum -y install puppet-agent
 
+      rm -rf /var/tmp/modules
+
       /opt/puppetlabs/bin/puppet module install \
       --environment production --modulepath=/var/tmp/modules \
       puppet-r10k
