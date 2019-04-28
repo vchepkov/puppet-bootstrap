@@ -41,6 +41,7 @@ Vagrant.configure(2) do |config|
     end
 
     master.vm.provision "shell", run: "once", env: {"PUPPET_ENV" => vagrant_branch}, inline: <<-SHELL
+      systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppetlabs.com/puppet6/puppet6-release-el-7.noarch.rpm
@@ -69,6 +70,7 @@ Vagrant.configure(2) do |config|
     end
 
     node.vm.provision "shell", run: "once", inline: <<-SHELL
+      systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppetlabs.com/puppet6/puppet6-release-el-7.noarch.rpm
