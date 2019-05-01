@@ -4,7 +4,7 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'aboe/chrony', '0.2.5'
-mod 'camptocamp/systemd', '2.3.0'
+mod 'camptocamp/systemd', '2.4.0'
 mod 'choria/choria', '0.13.0'
 mod 'choria/mcollective', '0.9.1'
 mod 'choria/mcollective_agent_filemgr', '2.0.1'
