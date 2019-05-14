@@ -31,8 +31,6 @@ Vagrant.configure(2) do |config|
     master.vm.hostname = "master.localdomain"
     master.vm.network "private_network", ip: "192.168.50.20"
     master.vm.network "forwarded_port", guest: 80,   host: 8000
-    master.vm.network "forwarded_port", guest: 8080, host: 8080
-    master.vm.network "forwarded_port", guest: 8140, host: 8140
 
     master.vm.provider "virtualbox" do |vb|
       vb.name   = "master"
