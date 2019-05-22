@@ -1,6 +1,6 @@
 # class to install puppet dashboard
 class bootstrap::dashboard (
-  Optional[String] $version = 'v0.3.0', # https://github.com/voxpupuli/puppetboard
+  Optional[String] $version = 'master', # https://github.com/voxpupuli/puppetboard
 ) {
 
   class { 'apache':
