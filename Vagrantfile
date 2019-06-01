@@ -51,6 +51,9 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/var/tmp/modules \
       puppet-r10k
 
+      # Workaround for broken r10k
+      /opt/puppetlabs/puppet/bin/gem install --no-document cri --version 2.15.6
+      
       /opt/puppetlabs/bin/puppet apply \
       --environment production --modulepath=/var/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
