@@ -34,5 +34,5 @@ mod 'theforeman/puppet', '12.0.1'
 
 # Unreleased fix for puppet 6.5.0
 mod 'puppetserver_gem',
-  :git => 'https://github.com/vchepkov/puppetlabs-puppetserver_gem.git',
-  :ref => 'puppet650'
+  :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git',
+  :ref => '486b62e56af85a5897e825a0d9bda57a6f92b37e'
