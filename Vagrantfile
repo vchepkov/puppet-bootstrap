@@ -56,6 +56,9 @@ Vagrant.configure(2) do |config|
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
       /vagrant/examples/bootstrap.sh
+      #TODO: remove once bug #15865 fixed
+      yum install -y yum-plugin-versionlock
+      yum versionlock 'postgresql96*'
     SHELL
   end
 

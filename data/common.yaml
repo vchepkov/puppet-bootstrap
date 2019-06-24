@@ -11,3 +11,7 @@ chrony::servers:
   
 classes:
   - bootstrap::agent
+
+#TODO: remove once bug #15865 fixed
+postgresql::server::package_ensure: '9.6.13'
+postgresql::server::contrib::package_ensure: "%{lookup('postgresql::server::package_ensure')}"
