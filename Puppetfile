@@ -24,6 +24,7 @@ mod 'puppetlabs/inifile', '3.0.0'
 mod 'puppetlabs/java', '4.1.0'
 mod 'puppetlabs/postgresql', '6.1.0'
 mod 'puppetlabs/puppetdb', '7.3.0'
+mod 'puppetlabs/puppetserver_gem', '1.1.1'
 mod 'puppetlabs/translate', '1.2.0'
 mod 'puppet/python', '3.0.1'
 mod 'puppetlabs/ruby', '1.0.1'
@@ -31,8 +32,3 @@ mod 'puppetlabs/stdlib', '6.0.0'
 mod 'puppetlabs/vcsrepo', '3.0.0'
 mod 'stahnma/epel', '1.3.1'
 mod 'theforeman/puppet', '12.0.1'
-
-# Unreleased fix for puppet 6.5.0
-mod 'puppetserver_gem',
-  :git => 'https://github.com/puppetlabs/puppetlabs-puppetserver_gem.git',
-  :ref => '486b62e56af85a5897e825a0d9bda57a6f92b37e'
