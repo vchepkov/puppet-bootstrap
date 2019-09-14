@@ -37,6 +37,15 @@ class bootstrap::dashboard (
     },
   }
 
+  # FIXME: Workaround for broken pypuppetdb v1.1.0
+  # Can't use file_line because of the dependency cycle
+  exec { 'fix pypuppetdb version':
+    command => '/bin/sed -i "s/pypuppetdb.*/pypuppetdb ==1.0.0/" /opt/puppetboard/puppetboard/requirements.txt',
+    unless  => '/bin/grep "pypuppetdb ==1.0.0" /opt/puppetboard/puppetboard/requirements.txt',
+    require => Vcsrepo['/opt/puppetboard/puppetboard'],
+    before  => Python::Virtualenv['/opt/puppetboard/virtenv-puppetboard'],
+  }
+
   class { 'puppetboard::apache::conf':
     basedir => '/opt/puppetboard',
   }

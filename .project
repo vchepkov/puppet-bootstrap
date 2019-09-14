@@ -13,9 +13,11 @@
 		<project>puppetboard</project>
 		<project>puppetdb</project>
 		<project>puppetserver_gem</project>
+		<project>python</project>
 		<project>r10k</project>
 		<project>stdlib</project>
 		<project>systemd</project>
+		<project>vcsrepo</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
