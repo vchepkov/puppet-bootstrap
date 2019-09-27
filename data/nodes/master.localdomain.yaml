@@ -9,7 +9,7 @@ classes:
 
 choria::manage_package_repo: true
 
-# Workaround for theforeman/puppet module insisting settting environment
+# Workaround for theforeman/puppet module insisting setting environment
 bootstrap::master::environment: "%{server_facts.environment}"
 
 # setup vagrant user as an administrator
