@@ -43,10 +43,6 @@ Vagrant.configure(2) do |config|
       systemctl mask firewalld
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet6-release-el-7.noarch.rpm
-### Workaround for broken PuppetDB 6.6
-      yum -y install yum-plugin-versionlock
-      yum versionlock puppetdb-termini-6.5.0 puppetdb-6.5.0
-###
       yum -y install puppet-agent
 
       rm -rf /var/tmp/modules
