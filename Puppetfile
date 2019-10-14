@@ -3,7 +3,7 @@
 #
 forge 'http://forge.puppetlabs.com'
 
-mod 'aboe/chrony', '0.3.0'
+mod 'aboe/chrony', '0.3.1'
 mod 'camptocamp/systemd', '2.6.0'
 mod 'choria/choria', '0.14.0'
 mod 'choria/mcollective', '0.10.1'
