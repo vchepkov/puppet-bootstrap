@@ -55,6 +55,8 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/var/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
+      yum -y install git
+
       /vagrant/examples/bootstrap.sh
     SHELL
   end
