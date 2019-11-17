@@ -47,7 +47,8 @@ class bootstrap::dashboard (
   }
 
   class { 'puppetboard::apache::conf':
-    basedir => '/opt/puppetboard',
+    basedir   => '/opt/puppetboard',
+    subscribe => Class['puppetboard'],
   }
 
 }
