@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box      = "centos/7"
+  config.vm.box      = "centos/8"
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provider :virtualbox do |vb|
@@ -42,7 +42,7 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet6-release-el-7.noarch.rpm
+      yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
 
       rm -rf /var/tmp/modules
@@ -56,6 +56,7 @@ Vagrant.configure(2) do |config|
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
       yum -y install git
+      dnf -y module disable postgresql
 
       /vagrant/examples/bootstrap.sh
     SHELL
@@ -75,7 +76,7 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet6-release-el-7.noarch.rpm
+      yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain --section agent

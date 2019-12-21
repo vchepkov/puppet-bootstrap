@@ -1,6 +1,6 @@
 # class to install puppet dashboard
 class bootstrap::dashboard (
-  Optional[String] $version = 'v1.0.0', # https://github.com/voxpupuli/puppetboard
+  Optional[String] $version = 'v2.1.0', # https://github.com/voxpupuli/puppetboard
 ) {
 
   class { 'apache':
@@ -27,29 +27,21 @@ class bootstrap::dashboard (
   }
 
   class { 'puppetboard':
-    basedir           => '/opt/puppetboard',
-    enable_catalog    => true,
-    manage_virtualenv => true,
-    revision          => $version,
-    reports_count     => 20,
-    extra_settings    => {
+    basedir             => '/opt/puppetboard',
+    default_environment => '*',
+    enable_catalog      => true,
+    manage_virtualenv   => true,
+    git_source          => 'https://github.com/vchepkov/puppetboard',
+    revision            => 'dailychart',
+    reports_count       => 20,
+    extra_settings      => {
       'DAILY_REPORTS_CHART_DAYS' => '10',
     },
-    notify            => Class['apache::service'],
-  }
-
-  # FIXME: Workaround for broken pypuppetdb v1.1.0
-  # Can't use file_line because of the dependency cycle
-  exec { 'fix pypuppetdb version':
-    command => '/bin/sed -i "s/pypuppetdb.*/pypuppetdb ==1.0.0/" /opt/puppetboard/puppetboard/requirements.txt',
-    unless  => '/bin/grep "pypuppetdb ==1.0.0" /opt/puppetboard/puppetboard/requirements.txt',
-    require => Vcsrepo['/opt/puppetboard/puppetboard'],
-    before  => Python::Virtualenv['/opt/puppetboard/virtenv-puppetboard'],
+    notify              => Class['apache::service'],
   }
 
   class { 'puppetboard::apache::conf':
     basedir   => '/opt/puppetboard',
     subscribe => Class['puppetboard'],
   }
-
 }
