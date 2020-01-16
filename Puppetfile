@@ -3,7 +3,7 @@
 #
 forge 'http://forge.puppetlabs.com'
 
-mod 'aboe/chrony', '0.3.1'
+mod 'aboe/chrony', '0.3.2'
 mod 'camptocamp/systemd', '2.8.0'
 mod 'choria/choria', '0.15.0'
 mod 'choria/mcollective', '0.10.2'
@@ -20,7 +20,7 @@ mod 'puppet/r10k', '8.0.0'
 mod 'puppetlabs/apache', '5.3.0'
 mod 'puppetlabs/concat', '6.1.0'
 mod 'puppetlabs/git', '0.5.0'
-mod 'puppetlabs/inifile', '4.0.0'
+mod 'puppetlabs/inifile', '4.1.0'
 mod 'puppetlabs/java', '6.0.0'
 mod 'puppetlabs/postgresql', '6.3.0'
 mod 'puppetlabs/puppetdb', '7.4.0'
