@@ -18,7 +18,6 @@ bootstrap::mco::admins:
 
 mcollective::client: true
 
-puppet::server_multithreaded: true
 puppet::server_jvm_min_heap_size: '512m'
 puppet::server_jvm_max_heap_size: '512m'
 
