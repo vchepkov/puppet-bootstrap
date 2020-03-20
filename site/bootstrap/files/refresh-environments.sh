@@ -1,4 +1,4 @@
-!#/bin/bash
+#!/bin/bash
 
 CERT=$(puppet config print hostcert)
 KEY=$(puppet config print hostprivkey)
