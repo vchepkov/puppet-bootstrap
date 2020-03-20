@@ -35,6 +35,7 @@ class bootstrap::dashboard (
     extra_settings    => {
       'DAILY_REPORTS_CHART_DAYS' => '10',
     },
+    notify            => Class['apache::service'],
   }
 
   # FIXME: Workaround for broken pypuppetdb v1.1.0
