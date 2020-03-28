@@ -55,7 +55,7 @@ class bootstrap::master (
   # workaround for choria expecting puppet in PATH
   file { '/usr/bin/puppet':
     ensure  => 'link',
-    target  => '/opt/puppetlabs/puppet/bin/puppet',
+    target  => '/opt/puppetlabs/bin/puppet',
     seltype => 'puppetagent_exec_t',
   }
 }
