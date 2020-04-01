@@ -55,7 +55,7 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/var/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
-      yum -y install git
+      yum -y install git-core
       dnf -y module disable postgresql
 
       /vagrant/examples/bootstrap.sh
