@@ -17,7 +17,7 @@ class bootstrap::r10k (
 
   class { '::r10k':
     remote   => $control_repo,
-    version  => '>= 3.1.0',
+    version  => '>= 3.2.0',
     postrun  => ['/opt/puppetlabs/puppet/bin/refresh-environments.sh','$modifiedenvs'],
     cachedir => "${facts['puppet_vardir']}/r10k",
   }
