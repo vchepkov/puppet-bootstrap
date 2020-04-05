@@ -21,8 +21,9 @@ class bootstrap::dashboard (
 
   if fact('os.selinux.enabled') {
     apache::custom_config { 'wsgi disable python bytecode':
-      filename => 'wsgi-custom.conf',
-      source   => "puppet:///modules/${module_name}/wsgi.conf",
+      filename      => 'wsgi-custom.conf',
+      source        => "puppet:///modules/${module_name}/wsgi.conf",
+      verify_config => false,
     }
   }
 
