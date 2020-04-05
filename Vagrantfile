@@ -24,6 +24,7 @@ Vagrant.configure(2) do |config|
     vb.default_nic_type = "virtio"
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
+    vb.customize ["modifyvm", :id, "--audio", "none"]
   end
 
   # Master
