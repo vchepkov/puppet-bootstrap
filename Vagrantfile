@@ -12,6 +12,8 @@ Vagrant.configure(2) do |config|
   # For a complete reference, please see the online documentation at
   # https://docs.vagrantup.com.
 
+  config.vagrant.plugins = "vagrant-hosts"
+
   vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
   # Every Vagrant development environment requires a box. You can search for
@@ -25,6 +27,12 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
     vb.customize ["modifyvm", :id, "--audio", "none"]
+  end
+
+  config.vm.provision :hosts do |h|
+    h.add_localhost_hostnames = false
+    h.add_host '192.168.50.20', ['master.localdomain', 'master']
+    h.add_host '192.168.50.21', ['node.localdomain', 'node']
   end
 
   # Master
@@ -79,7 +87,6 @@ Vagrant.configure(2) do |config|
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
-      /opt/puppetlabs/bin/puppet resource host master.localdomain ip=192.168.50.20
       /opt/puppetlabs/bin/puppet config set server master.localdomain --section agent
       /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
