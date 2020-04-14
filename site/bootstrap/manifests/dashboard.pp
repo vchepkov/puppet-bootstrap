@@ -1,12 +1,11 @@
-# class to install puppet dashboard
-class bootstrap::dashboard (
-  Optional[String] $revision = 'v2.1.2', # https://github.com/voxpupuli/puppetboard
-) {
+# install puppet dashboard
+class bootstrap::dashboard {
 
   class { 'apache':
     server_tokens    => 'Prod',
     server_signature => 'Off',
     trace_enable     => 'Off',
+    mpm_module       => 'event',
   }
 
   file { '/var/www/html/index.html':
@@ -17,31 +16,15 @@ class bootstrap::dashboard (
     require => Class['apache'],
   }
 
-  include apache::mod::wsgi
-
-  if fact('os.selinux.enabled') {
-    apache::custom_config { 'wsgi disable python bytecode':
-      filename      => 'wsgi-custom.conf',
-      source        => "puppet:///modules/${module_name}/wsgi.conf",
-      verify_config => false,
+  puppetboard { 'local':
+    default_environment => '*',
+    config              => {
+      'DAILY_REPORTS_CHART_DAYS' => '10',
+      'ENABLE_CATALOG'           => 'True',
     }
   }
 
-  class { 'puppetboard':
-    basedir             => '/opt/puppetboard',
-    default_environment => '*',
-    enable_catalog      => true,
-    manage_virtualenv   => true,
-    revision            => $revision,
-    reports_count       => 20,
-    extra_settings      => {
-      'DAILY_REPORTS_CHART_DAYS' => '10',
-    },
-    notify              => Class['apache::service'],
-  }
-
-  class { 'puppetboard::apache::conf':
-    basedir   => '/opt/puppetboard',
-    subscribe => Class['puppetboard'],
+  puppetboard::apache { 'local':
+    alias => '/puppetboard',
   }
 }
