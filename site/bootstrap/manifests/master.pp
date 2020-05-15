@@ -18,6 +18,10 @@ class bootstrap::master (
     disable_update_checking => true,
   }
 
+  class { 'puppet::server::puppetdb':
+    server => $puppet_master,
+  }
+
   class { 'puppet':
     puppetmaster                => $puppet_master,
     dns_alt_names               => $dns_alt_names,
@@ -30,12 +34,11 @@ class bootstrap::master (
       '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby',
       '/opt/puppetlabs/puppet/cache/lib'
     ],
-    server_puppetdb_host        => $puppet_master,
     server_reports              => 'puppetdb',
-    server_storeconfigs_backend => 'puppetdb',
     server_strict_variables     => true,
     server_external_nodes       => '',
     server_common_modules_path  => [],
+    server_storeconfigs         => true,
     hiera_config                => "${settings::confdir}/hiera.yaml",
     show_diff                   => true,
     additional_settings         => {
