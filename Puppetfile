@@ -15,6 +15,7 @@ mod 'choria/mcollective_agent_shell', '1.0.4'
 mod 'choria/mcollective_choria', '0.17.2'
 mod 'choria/mcollective_util_actionpolicy', '3.2.0'
 mod 'puppet/extlib', '5.0.0'
+mod 'puppet/python', '4.1.1'
 mod 'puppet/r10k', '8.3.0'
 mod 'puppetlabs/apache', '5.4.0'
 mod 'puppetlabs/augeas_core', '1.0.5'
@@ -34,4 +35,4 @@ mod 'theforeman/puppet', '14.0.0'
 
 mod 'puppetboard',
   :git => 'https://github.com/vchepkov/vchepkov-puppetboard.git',
-  :tag => '0.0.1'
+  :tag => 'v0.1.0'
