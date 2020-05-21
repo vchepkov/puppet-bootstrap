@@ -33,5 +33,5 @@ mod 'puppetlabs/yumrepo_core', '1.0.7'
 mod 'theforeman/puppet', '14.0.0'
 
 mod 'puppetboard',
-  :git    => 'https://github.com/vchepkov/vchepkov-puppetboard.git',
-  :branch => 'master'
+  :git => 'https://github.com/vchepkov/vchepkov-puppetboard.git',
+  :tag => '0.0.1'
