@@ -13,7 +13,7 @@ class bootstrap::r10k (
     source => "puppet:///modules/${module_name}/refresh-environments.sh",
   }
 
-  ensure_packages(['curl','mailx'])
+  ensure_packages(['curl','git-core','mailx'])
 
   class { '::r10k':
     remote   => $control_repo,
