@@ -6,10 +6,17 @@ class bootstrap::master (
   Optional[String] $environment          = undef,
 ) {
 
+  package { 'postgresql-module':
+    ensure   => disabled,
+    name     => 'postgresql',
+    provider => 'dnfmodule',
+  }
+
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
     postgres_version    => '11',
     before              => Class['puppetdb::server'],
+    require             => Package['postgresql-module'],
   }
 
   class { 'puppetdb::server':
