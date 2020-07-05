@@ -10,8 +10,8 @@ hierarchy:
       - "common.eyaml"
     lookup_key: eyaml_lookup_key
     options:
-      pkcs7_private_key: /etc/puppetlabs/code/keys/private_key.pkcs7.pem
-      pkcs7_public_key: /etc/puppetlabs/code/keys/public_key.pkcs7.pem
+      pkcs7_private_key: /etc/puppetlabs/puppetserver/keys/private_key.pkcs7.pem
+      pkcs7_public_key: /etc/puppetlabs/puppetserver/keys/public_key.pkcs7.pem
   - name: "Nodes data"
     paths:
       - "nodes/%{trusted.certname}.yaml"

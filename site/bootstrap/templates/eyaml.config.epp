@@ -1,3 +1,4 @@
 ---
-pkcs7_private_key: <%= $settings::codedir %>/keys/private_key.pkcs7.pem
-pkcs7_public_key:  <%= $settings::codedir %>/keys/public_key.pkcs7.pem
+# Location matches environment's hiera.yaml
+pkcs7_private_key: /etc/puppetlabs/puppetserver/keys/private_key.pkcs7.pem
+pkcs7_public_key:  /etc/puppetlabs/puppetserver/keys/public_key.pkcs7.pem
