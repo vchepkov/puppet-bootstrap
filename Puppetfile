@@ -31,8 +31,10 @@ mod 'puppetlabs/translate', '2.2.0'
 mod 'puppetlabs/ruby', '1.0.1'
 mod 'puppetlabs/stdlib', '6.3.0'
 mod 'puppetlabs/yumrepo_core', '1.0.7'
-mod 'theforeman/puppet', '14.0.0'
 
+mod 'puppet',
+  :git => 'https://github.com/vchepkov/puppet-puppet.git',
+  :ref => 'v4-catalog'
 mod 'puppetboard',
   :git => 'https://github.com/vchepkov/vchepkov-puppetboard.git',
   :tag => 'v0.1.0'
