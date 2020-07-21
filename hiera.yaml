@@ -5,7 +5,7 @@ defaults:
   data_hash: yaml_data
 hierarchy:
   - name: "Node secrets"
-    paths: 
+    paths:
       - "nodes/%{trusted.certname}.eyaml"
       - "common.eyaml"
     lookup_key: eyaml_lookup_key

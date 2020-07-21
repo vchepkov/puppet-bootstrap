@@ -30,28 +30,15 @@ class bootstrap::master (
   }
 
   class { 'puppet':
-    puppetmaster                => $puppet_master,
-    dns_alt_names               => $dns_alt_names,
-    server                      => true,
-    environment                 => $environment,
-    autosign                    => $autosign,
-    server_check_for_updates    => false,
-    server_foreman              => false,
-    server_ruby_load_paths      => [
-      '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby',
-      '/opt/puppetlabs/puppet/cache/lib'
-    ],
-    server_reports              => 'puppetdb',
-    server_strict_variables     => true,
-    server_external_nodes       => '',
-    server_common_modules_path  => [],
-    server_storeconfigs         => true,
-    hiera_config                => "${settings::confdir}/hiera.yaml",
-    show_diff                   => true,
-    additional_settings         => {
-      'color'  => false,
-      'strict' => 'off',
-    },
+    autosign            => $autosign,
+    dns_alt_names       => $dns_alt_names,
+    environment         => $environment,
+    hiera_config        => "${settings::confdir}/hiera.yaml",
+    server              => true,
+    server_foreman      => false,
+    server_reports      => 'puppetdb',
+    server_storeconfigs => true,
+    puppetmaster        => $puppet_master,
   }
 
   # Don't start agent until master is configured
