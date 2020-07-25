@@ -4,6 +4,7 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'aboe/chrony', '0.3.2'
+mod 'camptocamp/catalog_diff', :latest
 mod 'camptocamp/systemd', '2.9.0'
 mod 'choria/choria', '0.18.0'
 mod 'choria/mcollective', '0.10.5'
