@@ -64,6 +64,10 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
+      /opt/puppetlabs/bin/puppet apply \
+      --environment production --modulepath=/tmp/modules \
+      -e "file_line { 'mco': path=>'/root/.bashrc', line=>'alias mco=\\'sudo -u vagrant USER=vagrant /opt/puppetlabs/puppet/bin/mco\\''}"
+
       yum -y install git-core
 
       /vagrant/examples/bootstrap.sh
