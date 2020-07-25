@@ -2,6 +2,7 @@
 classes:
   - mcollective
 
+choria::broker::federation_cluster: 'production'
 choria::server_config:
   plugin.choria.use_srv: false
   plugin.choria.middleware_hosts: "master.localdomain:4222"

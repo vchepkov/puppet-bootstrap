@@ -24,7 +24,6 @@ mcollective::client: true
 puppet::additional_settings:
   color: 'false'
   strict: 'off'
-
 puppet::server_puppetserver_version: '6.12.0'
 puppet::server::cipher_suites:
   - 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
@@ -44,7 +43,6 @@ puppet::server_ruby_load_paths:
   - '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby'
   - '/opt/puppetlabs/puppet/cache/lib'
 puppet::server_strict_variables: true
-
 puppet::show_diff: true
 
 puppetdb::server::cipher_suites: 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'

@@ -54,14 +54,14 @@ Vagrant.configure(2) do |config|
       yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
 
-      rm -rf /var/tmp/modules
+      rm -rf /tmp/modules
 
       /opt/puppetlabs/bin/puppet module install \
-      --environment production --modulepath=/var/tmp/modules \
+      --environment production --modulepath=/tmp/modules \
       puppet-r10k
 
       /opt/puppetlabs/bin/puppet apply \
-      --environment production --modulepath=/var/tmp/modules \
+      --environment production --modulepath=/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
 
       yum -y install git-core
@@ -86,7 +86,7 @@ Vagrant.configure(2) do |config|
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
-      /opt/puppetlabs/bin/puppet config set server master.localdomain --section agent
+      /opt/puppetlabs/bin/puppet config set server master.localdomain --section main
       /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL
