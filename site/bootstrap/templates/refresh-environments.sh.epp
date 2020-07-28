@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for environment in $1; do
+  /bin/curl -k --cert <%= $settings::hostcert %> \
+  --key <%= $settings::hostprivkey %> -X DELETE \
+  https://localhost:8140/puppet-admin-api/v1/environment-cache\?environment=$environment
+done

@@ -6,11 +6,11 @@ class bootstrap::r10k (
 ) {
 
   file { '/opt/puppetlabs/puppet/bin/refresh-environments.sh':
-    ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
-    source => "puppet:///modules/${module_name}/refresh-environments.sh",
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    content => epp("${module_name}/refresh-environments.sh.epp"),
   }
 
   ensure_packages(['curl','git-core','mailx'])
