@@ -48,3 +48,6 @@ puppet::show_diff: true
 puppetdb::server::cipher_suites: 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
 puppetdb::server::node_ttl: '0s'
 puppetdb::server::node_purge_ttl: '1d'
+
+r10k::deploy_settings:
+  generate_types: true
