@@ -25,6 +25,6 @@ class bootstrap::dashboard {
   }
 
   puppetboard::apache { 'local':
-    alias => '/puppetboard',
+    url_path => '/puppetboard',
   }
 }
