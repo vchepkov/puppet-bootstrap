@@ -30,8 +30,6 @@ puppet::server::cipher_suites:
   - 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
   - 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
   - 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
-puppet::server_admin_api_whitelist:
-  - "%{trusted.certname}"
 puppet::server_check_for_updates: false
 puppet::server_common_modules_path:
   - /etc/puppetlabs/code/modules
@@ -39,6 +37,8 @@ puppet::server_environment_class_cache_enabled: true
 puppet::server_external_nodes: ''
 puppet::server_jvm_min_heap_size: '512m'
 puppet::server_jvm_max_heap_size: '512m'
+puppet::server_puppetserver_trusted_agents:
+  - "%{trusted.certname}"
 puppet::server_ruby_load_paths:
   - '/opt/puppetlabs/puppet/lib/ruby/vendor_ruby'
   - '/opt/puppetlabs/puppet/cache/lib'
