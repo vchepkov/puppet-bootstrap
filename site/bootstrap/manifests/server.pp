@@ -4,7 +4,7 @@ class bootstrap::server (
   Optional[Array[String]] $dns_alt_names = undef,
   Boolean $autosign                      = true,
   Optional[String] $environment          = undef,
-) {
+) inherits bootstrap {
 
   package { 'postgresql-module':
     ensure   => disabled,
@@ -34,19 +34,12 @@ class bootstrap::server (
     dns_alt_names       => $dns_alt_names,
     environment         => $environment,
     hiera_config        => "${settings::confdir}/hiera.yaml",
+    runmode             => 'unmanaged',
     server              => true,
     server_foreman      => false,
     server_reports      => 'puppetdb',
     server_storeconfigs => true,
     puppetmaster        => $puppet_server,
-  }
-
-  # Don't start agent until server is configured
-  Service['puppetserver'] -> Service['puppet']
-
-  systemd::dropin_file { 'local.conf':
-    unit   => 'puppet.service',
-    source => "puppet:///modules/${module_name}/puppet-systemd.conf",
   }
 
   # workaround for choria expecting puppet in PATH

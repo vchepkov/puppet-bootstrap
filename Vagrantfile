@@ -71,6 +71,8 @@ Vagrant.configure(2) do |config|
       yum -y install git-core
 
       /vagrant/examples/bootstrap.sh
+      
+      /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL
   end
 

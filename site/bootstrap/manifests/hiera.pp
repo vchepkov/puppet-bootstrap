@@ -1,7 +1,5 @@
 # class to configure hiera
-class bootstrap::hiera (
-  String $server_service = 'puppetserver',
-){
+class bootstrap::hiera inherits bootstrap {
 
   $build_packages = ['bzip2','gcc','make']
   ensure_packages($build_packages)

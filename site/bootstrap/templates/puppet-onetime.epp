@@ -1,0 +1,13 @@
+[Unit]
+Description=Initiate puppet run during boot
+After=network-online.target <%= $bootstrap::server_service %>.service
+Before=<%= $bootstrap::agent_service %>.service
+
+[Service]
+Type=oneshot
+TimeoutStartSec=600
+ExecStart=<%= $bootstrap::agent_bin %> agent --onetime --no-daemonize --no-splay
+RemainAfterExit=no
+
+[Install]
+WantedBy=multi-user.target
