@@ -5,20 +5,20 @@ classes:
 choria::broker::federation_cluster: 'production'
 choria::server_config:
   plugin.choria.use_srv: false
-  plugin.choria.middleware_hosts: "master.localdomain:4222"
+  plugin.choria.middleware_hosts: "puppet.localdomain:4222"
 
 mcollective::plugin_classes:
   - mcollective_agent_shell
 
 mcollective_choria::config:
   use_srv_records: false
-  puppetserver_host: "master.localdomain"
+  puppetserver_host: "puppet.localdomain"
   puppetserver_port: 8140
-  puppetca_host: "master.localdomain"
+  puppetca_host: "puppet.localdomain"
   puppetca_port: 8140
-  puppetdb_host: "master.localdomain"
+  puppetdb_host: "puppet.localdomain"
   puppetdb_port: 8081
-  middleware_hosts: "master.localdomain:4222"
+  middleware_hosts: "puppet.localdomain:4222"
 
 mcollective::site_policies:
   - action: "allow"

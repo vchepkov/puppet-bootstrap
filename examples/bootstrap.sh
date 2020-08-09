@@ -9,4 +9,4 @@ rm -rf $(/opt/puppetlabs/bin/puppet config print environmentpath)/${puppet_envir
 
 /opt/puppetlabs/bin/puppet apply \
 --environment $puppet_environment \
--e "class { 'bootstrap::master': environment => $puppet_environment }"
+-e "class { 'bootstrap::server': environment => $puppet_environment }"

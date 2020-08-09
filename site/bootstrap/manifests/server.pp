@@ -1,6 +1,6 @@
-# Configure puppet master
-class bootstrap::master (
-  String $puppet_master                  = 'master.localdomain',
+# Configure puppet server
+class bootstrap::server (
+  String $puppet_server                  = 'puppet.localdomain',
   Optional[Array[String]] $dns_alt_names = undef,
   Boolean $autosign                      = true,
   Optional[String] $environment          = undef,
@@ -26,7 +26,7 @@ class bootstrap::master (
   }
 
   class { 'puppet::server::puppetdb':
-    server => $puppet_master,
+    server => $puppet_server,
   }
 
   class { 'puppet':
@@ -38,10 +38,10 @@ class bootstrap::master (
     server_foreman      => false,
     server_reports      => 'puppetdb',
     server_storeconfigs => true,
-    puppetmaster        => $puppet_master,
+    puppetmaster        => $puppet_server,
   }
 
-  # Don't start agent until master is configured
+  # Don't start agent until server is configured
   Service['puppetserver'] -> Service['puppet']
 
   systemd::dropin_file { 'local.conf':

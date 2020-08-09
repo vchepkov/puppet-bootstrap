@@ -31,23 +31,23 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :hosts do |h|
     h.add_localhost_hostnames = false
-    h.add_host '192.168.50.20', ['master.localdomain', 'master']
+    h.add_host '192.168.50.20', ['puppet.localdomain', 'puppet']
     h.add_host '192.168.50.21', ['node.localdomain', 'node']
   end
 
-  # Master
-  config.vm.define "master", primary: true do |master|
-    master.vm.hostname = "master.localdomain"
-    master.vm.network "private_network", ip: "192.168.50.20"
-    master.vm.network "forwarded_port", guest: 80,   host: 8000
+  # Puppet
+  config.vm.define "puppet", primary: true do |puppet|
+    puppet.vm.hostname = "puppet.localdomain"
+    puppet.vm.network "private_network", ip: "192.168.50.20"
+    puppet.vm.network "forwarded_port", guest: 80,   host: 8000
 
-    master.vm.provider "virtualbox" do |vb|
-      vb.name   = "master"
+    puppet.vm.provider "virtualbox" do |vb|
+      vb.name   = "puppet"
       vb.memory = "4096"
       vb.cpus   = "2"
     end
 
-    master.vm.provision "shell", run: "once", env: {"PUPPET_ENV" => vagrant_branch}, inline: <<-SHELL
+    puppet.vm.provision "shell", run: "once", env: {"PUPPET_ENV" => vagrant_branch}, inline: <<-SHELL
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
@@ -90,7 +90,7 @@ Vagrant.configure(2) do |config|
       systemctl stop firewalld
       yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
-      /opt/puppetlabs/bin/puppet config set server master.localdomain --section main
+      /opt/puppetlabs/bin/puppet config set server puppet.localdomain --section main
       /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL

@@ -1,6 +1,6 @@
 ---
 classes:
-  - bootstrap::master
+  - bootstrap::server
   - bootstrap::mco
   - bootstrap::dashboard
   - bootstrap::hiera
@@ -13,7 +13,7 @@ apache::mod::wsgi::package_name: python3-mod_wsgi
 choria::manage_package_repo: true
 
 # Workaround for theforeman/puppet module insisting setting environment
-bootstrap::master::environment: "%{server_facts.environment}"
+bootstrap::server::environment: "%{server_facts.environment}"
 
 # setup vagrant user as an administrator
 bootstrap::mco::admins:
