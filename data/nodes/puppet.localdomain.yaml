@@ -33,10 +33,12 @@ puppet::server::cipher_suites:
 puppet::server_check_for_updates: false
 puppet::server_common_modules_path:
   - /etc/puppetlabs/code/modules
+puppet::server_compile_mode: jit
 puppet::server_environment_class_cache_enabled: true
 puppet::server_external_nodes: ''
 puppet::server_jvm_min_heap_size: '512m'
 puppet::server_jvm_max_heap_size: '512m'
+puppet::server_max_requests_per_instance: 100000
 puppet::server_puppetserver_trusted_agents:
   - "%{trusted.certname}"
 puppet::server_ruby_load_paths:
