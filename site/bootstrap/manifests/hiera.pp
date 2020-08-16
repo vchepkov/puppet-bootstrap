@@ -34,11 +34,11 @@ class bootstrap::hiera inherits bootstrap {
   }
 
   file { $settings::hiera_config:
-    ensure => file,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0644',
-    source => "puppet:///modules/${module_name}/hiera5.yaml",
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => epp("${module_name}/hiera5.yaml.epp"),
   }
 
   Service <| title == $server_service |> {

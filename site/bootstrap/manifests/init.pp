@@ -1,4 +1,4 @@
-# Set booutstrap defaults
+# Set bootstrap defaults
 class bootstrap (
   $agent_service  = 'puppet',
   $agent_bin      = '/opt/puppetlabs/bin/puppet',

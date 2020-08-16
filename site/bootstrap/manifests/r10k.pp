@@ -1,8 +1,8 @@
 # Configure r10k
 class bootstrap::r10k (
-  String  $control_repo  = 'https://github.com/vchepkov/puppet-bootstrap.git',
-  String  $user          = 'root',
-  Boolean $enable        = true,
+  String  $control_repo = 'https://github.com/vchepkov/puppet-bootstrap.git',
+  String  $user         = 'root',
+  Boolean $enable       = true,
 ) {
 
   file { '/opt/puppetlabs/puppet/bin/refresh-environments.sh':
