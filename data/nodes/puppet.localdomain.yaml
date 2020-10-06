@@ -7,9 +7,6 @@ classes:
   - bootstrap::r10k
   - choria::broker
 
-apache::mod::wsgi::mod_path: mod_wsgi_python3.so
-apache::mod::wsgi::package_name: python3-mod_wsgi
-
 choria::manage_package_repo: true
 
 # Workaround for theforeman/puppet module insisting setting environment
