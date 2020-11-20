@@ -3,7 +3,6 @@
 #
 forge 'http://forge.puppetlabs.com'
 
-mod 'aboe/chrony', '0.3.2'
 mod 'camptocamp/catalog_diff', :latest
 mod 'camptocamp/systemd', '2.10.0'
 mod 'choria/choria', '0.19.0'
@@ -15,6 +14,7 @@ mod 'choria/mcollective_agent_service', '4.0.1'
 mod 'choria/mcollective_agent_shell', '1.0.4'
 mod 'choria/mcollective_choria', '0.19.0'
 mod 'choria/mcollective_util_actionpolicy', '3.2.0'
+mod 'puppet/chrony', '0.4.0'
 mod 'puppet/extlib', '5.0.0'
 mod 'puppet/python', '5.0.0'
 mod 'puppet/r10k', '9.0.0'
