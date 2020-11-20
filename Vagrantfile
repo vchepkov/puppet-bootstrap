@@ -51,7 +51,7 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
+      yum -y install http://yum.puppet.com/puppet6/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
 
       rm -rf /tmp/modules
@@ -90,7 +90,7 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet6-release-el-8.noarch.rpm
+      yum -y install http://yum.puppet.com/puppet6/puppet6-release-el-8.noarch.rpm
       yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet config set server puppet.localdomain --section main
       /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
