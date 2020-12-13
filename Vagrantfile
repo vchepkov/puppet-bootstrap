@@ -16,9 +16,9 @@ Vagrant.configure(2) do |config|
 
   vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
-  # Every Vagrant development environment requires a box. You can search for
-  # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box      = "centos/8"
+  config.vm.box = "oraclelinux/8"
+  config.vm.box_url = "https://oracle.github.io/vagrant-projects/boxes/oraclelinux/8.json"
+
   config.vm.synced_folder ".", "/vagrant"
 
   config.vm.provider :virtualbox do |vb|
