@@ -25,6 +25,17 @@ class bootstrap::server (
     disable_update_checking => true,
   }
 
+  #FIXME: Workaround for puppetdb 6.14
+  file { '/etc/puppetlabs/puppetdb/conf.d/auth.conf':
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
+    content => epp("${module_name}/puppetdb-auth-conf.epp"),
+    require => Package[$puppetdb::server::puppetdb_package],
+    notify  => Service[$puppetdb::server::puppetdb_service],
+  }
+
   class { 'puppet::server::puppetdb':
     server => $puppet_server,
   }
