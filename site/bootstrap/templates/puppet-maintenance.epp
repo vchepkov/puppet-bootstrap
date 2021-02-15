@@ -1,0 +1,8 @@
+<%- | 
+  Array[Stdlib::Unixpath] $clean_dir,
+  String $max_age,
+| -%>
+# managed by puppet
+<% $clean_dir.each |$d| { -%>
+e <%= $d %>/ - - - <%= $max_age %>
+<% } -%>

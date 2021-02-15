@@ -7,7 +7,8 @@ classes:
   - bootstrap::r10k
   - choria::broker
 
-choria::manage_package_repo: true
+bootstrap::maintenance::clean_dir:
+  - /opt/puppetlabs/server/data/puppetserver/bucket
 
 # Workaround for theforeman/puppet module insisting setting environment
 bootstrap::server::environment: "%{server_facts.environment}"
@@ -15,6 +16,8 @@ bootstrap::server::environment: "%{server_facts.environment}"
 # setup vagrant user as an administrator
 bootstrap::mco::admins:
   - vagrant
+
+choria::manage_package_repo: true
 
 mcollective::client: true
 

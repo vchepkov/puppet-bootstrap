@@ -7,4 +7,5 @@ class bootstrap::agent inherits bootstrap {
     content => epp("${module_name}/puppet-onetime.epp"),
   }
 
+  include bootstrap::maintenance
 }

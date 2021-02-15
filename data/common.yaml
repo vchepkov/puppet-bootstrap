@@ -1,7 +1,13 @@
 ---
 lookup_options:
+  bootstrap::maintenance::clean_dir:
+    merge: unique
   bootstrap::mco::admins:
     merge: unique
+
+bootstrap::maintenance::clean_dir:
+  - "%{facts.puppet_vardir}/clientbucket"
+  - "%{facts.puppet_vardir}/reports"
 
 chrony::servers:
   - 0.centos.pool.ntp.org
