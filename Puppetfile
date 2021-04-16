@@ -4,7 +4,7 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'camptocamp/catalog_diff', :latest
-mod 'camptocamp/systemd', '2.12.0'
+mod 'camptocamp/systemd', '3.0.0'
 mod 'choria/choria', '0.23.0'
 mod 'choria/mcollective', '0.13.2'
 mod 'choria/mcollective_agent_filemgr', '2.0.1'
