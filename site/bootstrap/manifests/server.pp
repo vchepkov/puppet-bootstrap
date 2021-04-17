@@ -4,6 +4,7 @@ class bootstrap::server (
   Optional[Array[String]] $dns_alt_names = undef,
   Boolean $autosign                      = true,
   Optional[String] $environment          = undef,
+  String $postgres_version               = '14',
 ) inherits bootstrap {
   package { 'postgresql-module':
     ensure   => disabled,
@@ -13,7 +14,7 @@ class bootstrap::server (
 
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
-    postgres_version    => '11',
+    postgres_version    => $postgres_version,
     before              => Class['puppetdb::server'],
     require             => Package['postgresql-module'],
   }
