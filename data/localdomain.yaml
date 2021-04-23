@@ -11,7 +11,7 @@ mcollective::plugin_classes:
   - mcollective_agent_shell
 
 mcollective_choria::config:
-  use_srv_records: false
+  use_srv: false
   puppetserver_host: "puppet.localdomain"
   puppetserver_port: 8140
   puppetca_host: "puppet.localdomain"
