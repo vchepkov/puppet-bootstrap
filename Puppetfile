@@ -4,7 +4,6 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'camptocamp/catalog_diff', :latest
-mod 'camptocamp/systemd', '3.0.0'
 mod 'choria/choria', '0.24.0'
 mod 'choria/mcollective', '0.13.2'
 mod 'choria/mcollective_agent_filemgr', '2.0.1'
@@ -18,6 +17,7 @@ mod 'puppet/chrony', '2.0.0'
 mod 'puppet/extlib', '5.1.0'
 mod 'puppet/python', '6.1.0'
 mod 'puppet/r10k', '10.1.0'
+mod 'puppet/systemd', '3.2.0'
 mod 'puppetlabs/apache', '6.4.0'
 mod 'puppetlabs/augeas_core', '1.1.2'
 mod 'puppetlabs/concat', '7.0.2'
