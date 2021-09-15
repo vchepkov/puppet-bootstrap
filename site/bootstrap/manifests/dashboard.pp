@@ -1,6 +1,5 @@
 # install puppet dashboard
 class bootstrap::dashboard {
-
   class { 'apache':
     server_tokens    => 'Prod',
     server_signature => 'Off',
@@ -21,7 +20,7 @@ class bootstrap::dashboard {
     config              => {
       'DAILY_REPORTS_CHART_DAYS' => '10',
       'ENABLE_CATALOG'           => 'True',
-    }
+    },
   }
 
   puppetboard::apache { 'local':

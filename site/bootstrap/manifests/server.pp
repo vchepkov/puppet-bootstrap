@@ -5,7 +5,6 @@ class bootstrap::server (
   Boolean $autosign                      = true,
   Optional[String] $environment          = undef,
 ) inherits bootstrap {
-
   package { 'postgresql-module':
     ensure   => disabled,
     name     => 'postgresql',

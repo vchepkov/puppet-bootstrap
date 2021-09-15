@@ -1,10 +1,9 @@
 # Configure r10k
-class bootstrap::r10k (
+class bootstrap::r10k_config (
   String  $control_repo = 'https://github.com/vchepkov/puppet-bootstrap.git',
   String  $user         = 'root',
   Boolean $enable       = true,
 ) {
-
   file { '/opt/puppetlabs/puppet/bin/refresh-environments.sh':
     ensure  => file,
     owner   => 'root',
@@ -15,7 +14,7 @@ class bootstrap::r10k (
 
   ensure_packages(['curl','git-core','mailx'])
 
-  class { '::r10k':
+  class { 'r10k':
     remote   => $control_repo,
     version  => '>= 3.2.0',
     postrun  => ['/opt/puppetlabs/puppet/bin/refresh-environments.sh','$modifiedenvs'],
@@ -33,5 +32,4 @@ class bootstrap::r10k (
     user    => $user,
     special => 'daily',
   }
-
 }

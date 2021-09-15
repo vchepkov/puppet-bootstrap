@@ -1,7 +1,7 @@
 # Configure MCO access
 class bootstrap::mco (
   Array[String] $admins = [],
-){
+) {
   $admins.each | $user | {
     exec { "request mco certificate for ${user}":
       command     => '/usr/bin/choria enroll',

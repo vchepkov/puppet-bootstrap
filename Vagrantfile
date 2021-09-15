@@ -57,7 +57,7 @@ Vagrant.configure(2) do |config|
 
       /opt/puppetlabs/bin/puppet module install \
       --environment production --modulepath=/tmp/modules \
-      puppet-r10k
+      puppet/r10k
 
       /opt/puppetlabs/bin/puppet apply \
       --environment production --modulepath=/tmp/modules \

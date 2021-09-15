@@ -1,6 +1,5 @@
 # class to configure hiera
 class bootstrap::hiera inherits bootstrap {
-
   $build_packages = ['bzip2','gcc','make']
   ensure_packages($build_packages)
 
@@ -8,18 +7,15 @@ class bootstrap::hiera inherits bootstrap {
   $hiera_agent_gems  = ['hiera-eyaml']
 
   $hiera_agent_gems.each | $gem | {
-
     package { "${gem} ruby":
       ensure   => installed,
       name     => $gem,
       provider => 'puppet_gem',
       require  => Package[$build_packages],
     }
-
   }
 
   $hiera_server_gems.each | $gem | {
-
     package { "${gem} jruby":
       ensure   => installed,
       name     => $gem,
@@ -27,10 +23,9 @@ class bootstrap::hiera inherits bootstrap {
       require  => Package[$build_packages],
     }
 
-    Service <| title == $server_service |> {
+    Service <| title == $bootstrap::server_service |> {
       subscribe +> Package["${gem} jruby"],
     }
-
   }
 
   file { $settings::hiera_config:
@@ -41,7 +36,7 @@ class bootstrap::hiera inherits bootstrap {
     content => epp("${module_name}/hiera5.yaml.epp"),
   }
 
-  Service <| title == $server_service |> {
+  Service <| title == $bootstrap::server_service |> {
     subscribe +> File[$settings::hiera_config],
   }
 
@@ -64,5 +59,4 @@ class bootstrap::hiera inherits bootstrap {
     ensure => link,
     target => '/opt/puppetlabs/puppet/bin/eyaml',
   }
-
 }

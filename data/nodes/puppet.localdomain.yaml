@@ -4,7 +4,7 @@ classes:
   - bootstrap::mco
   - bootstrap::dashboard
   - bootstrap::hiera
-  - bootstrap::r10k
+  - bootstrap::r10k_config
   - choria::broker
 
 bootstrap::maintenance::clean_dir:
