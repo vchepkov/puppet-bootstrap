@@ -4,14 +4,14 @@
 forge 'http://forge.puppetlabs.com'
 
 mod 'camptocamp/catalog_diff', :latest
-mod 'choria/choria', '0.25.0'
-mod 'choria/mcollective', '0.13.3'
+mod 'choria/choria', '0.26.2'
+mod 'choria/mcollective', '0.13.4'
 mod 'choria/mcollective_agent_filemgr', '2.0.1'
 mod 'choria/mcollective_agent_package', '5.3.0'
 mod 'choria/mcollective_agent_puppet', '2.4.1'
 mod 'choria/mcollective_agent_service', '4.0.1'
 mod 'choria/mcollective_agent_shell', '1.0.4'
-mod 'choria/mcollective_choria', '0.21.1'
+mod 'choria/mcollective_choria', '0.21.2'
 mod 'choria/mcollective_util_actionpolicy', '3.2.0'
 mod 'puppet/chrony', '2.0.0'
 mod 'puppet/extlib', '5.2.1'
