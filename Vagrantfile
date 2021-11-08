@@ -30,14 +30,14 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision :hosts do |h|
     h.add_localhost_hostnames = false
-    h.add_host '192.168.50.20', ['puppet.localdomain', 'puppet']
-    h.add_host '192.168.50.21', ['node.localdomain', 'node']
+    h.add_host '192.168.56.20', ['puppet.localdomain', 'puppet']
+    h.add_host '192.168.56.21', ['node.localdomain', 'node']
   end
 
   # Puppet
   config.vm.define "puppet", primary: true do |puppet|
     puppet.vm.hostname = "puppet.localdomain"
-    puppet.vm.network "private_network", ip: "192.168.50.20"
+    puppet.vm.network "private_network", ip: "192.168.56.20"
     puppet.vm.network "forwarded_port", guest: 80,   host: 8000
 
     puppet.vm.provider "virtualbox" do |vb|
@@ -78,7 +78,7 @@ Vagrant.configure(2) do |config|
   # Node
   config.vm.define "node", autostart: false do |node|
     node.vm.hostname = "node.localdomain"
-    node.vm.network "private_network", ip: "192.168.50.21"
+    node.vm.network "private_network", ip: "192.168.56.21"
 
     node.vm.provider "virtualbox" do |vb|
       vb.name   = "node"
