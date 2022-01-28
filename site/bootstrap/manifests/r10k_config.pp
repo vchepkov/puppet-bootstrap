@@ -28,7 +28,7 @@ class bootstrap::r10k_config (
 
   cron { 'r10k deploy':
     ensure  => $ensure,
-    command => '/opt/puppetlabs/puppet/bin/r10k deploy environment -p >/dev/null',
+    command => '/opt/puppetlabs/puppet/bin/r10k deploy environment -p -v error >/dev/null',
     user    => $user,
     special => 'daily',
   }
