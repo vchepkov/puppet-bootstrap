@@ -24,7 +24,7 @@ mcollective::client: true
 puppet::additional_settings:
   color: 'false'
   strict: 'off'
-puppet::server_puppetserver_version: '6.12.0'
+puppet::server_puppetserver_version: '6.18.0'
 puppet::server::cipher_suites:
   - 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
   - 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
