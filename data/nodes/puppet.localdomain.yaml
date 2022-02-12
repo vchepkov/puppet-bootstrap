@@ -25,10 +25,15 @@ puppet::additional_settings:
   color: 'false'
   strict: 'off'
 puppet::server::cipher_suites:
+  - 'TLS_AES_256_GCM_SHA384'
+  - 'TLS_AES_128_GCM_SHA256'
   - 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
   - 'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
   - 'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
   - 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+puppet::server::ssl_protocols:
+  - 'TLSv1.3'
+  - 'TLSv1.2'  
 puppet::server_check_for_updates: false
 puppet::server_common_modules_path:
   - /etc/puppetlabs/code/modules
@@ -46,9 +51,10 @@ puppet::server_ruby_load_paths:
 puppet::server_strict_variables: true
 puppet::show_diff: true
 
-puppetdb::server::cipher_suites: 'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+puppetdb::server::cipher_suites: 'TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
 puppetdb::server::node_ttl: '0d'
 puppetdb::server::node_purge_ttl: '1d'
+puppetdb::server::ssl_protocols: 'TLSv1.3,TLSv1.2'
 
 r10k::deploy_settings:
   generate_types: true
