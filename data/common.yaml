@@ -8,12 +8,6 @@ lookup_options:
 bootstrap::maintenance::clean_dir:
   - "%{facts.puppet_vardir}/clientbucket"
   - "%{facts.puppet_vardir}/reports"
-
-chrony::servers:
-  - 0.centos.pool.ntp.org
-  - 1.centos.pool.ntp.org
-  - 2.centos.pool.ntp.org
-  - 3.centos.pool.ntp.org
   
 classes:
   - bootstrap::agent

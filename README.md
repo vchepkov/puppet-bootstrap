@@ -1,6 +1,6 @@
-Bootstrap of Puppet Server
+Bootstrap Puppet Server
   - puppetserver
   - hiera 5 with hiera-eyaml
   - puppetdb
   - puppetboard
-  - mcollective
+  - choria/mcollective
