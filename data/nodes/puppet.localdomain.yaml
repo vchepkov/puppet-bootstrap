@@ -17,8 +17,6 @@ bootstrap::server::environment: "%{server_facts.environment}"
 bootstrap::mco::admins:
   - vagrant
 
-choria::manage_package_repo: true
-
 mcollective::client: true
 
 puppet::additional_settings:

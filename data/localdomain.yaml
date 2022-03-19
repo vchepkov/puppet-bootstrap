@@ -1,11 +1,22 @@
 ---
 classes:
   - mcollective
+  - yum
 
 choria::broker::federation_cluster: 'production'
 choria::server_config:
   plugin.choria.use_srv: false
   plugin.choria.middleware_hosts: "puppet.localdomain:4222"
+
+#TODO: remove once packages are fixed
+choria::manage_package_repo: false
+yum::managed_repos:
+  - choria_release
+yum::repos:
+  choria_release:
+    mirrorlist: "http://mirrorlists.choria.io/yum/release/el/$releasever/$basearch.txt"
+    gpgcheck: false
+    repo_gpgcheck: false
 
 mcollective::plugin_classes:
   - mcollective_agent_shell
