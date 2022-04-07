@@ -17,6 +17,8 @@ Vagrant.configure(2) do |config|
   vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
   config.vm.box = "rockylinux/8"
+  config.vm.box_version = "4.0.0"
+  config.vm.box_check_update = false
 
   config.vm.synced_folder ".", "/vagrant"
 
