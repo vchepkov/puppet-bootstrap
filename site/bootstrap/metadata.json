@@ -1,10 +1,10 @@
 {
   "name": "vchepkov-bootstrap",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Vadym Chepkov",
   "summary": "Bootstrap Puppet Server",
   "license": "Apache-2.0",
-  "source": "https://github.com/vchepkov/puppet-bootstrap/tree/production/site/bootstrap",
+  "source": "https://github.com/vchepkov/puppet-bootstrap/site/bootstrap",
   "project_page": "https://github.com/vchepkov/puppet-bootstrap",
   "issues_url": "https://github.com/vchepkov/puppet-bootstrap/issues",
   "dependencies": [
@@ -42,10 +42,16 @@
     },
     {
       "name": "vchepkov/puppetboard",
-      "version_requirement": ">= 0.3.0 < 1.0.0"
+      "version_requirement": ">= 1.0.0 < 2.0.0"
     }  
   ],
   "operatingsystem_support": [
+    {
+      "operatingsystem": "AlmaLinux",
+      "operatingsystemrelease": [
+        "8"
+      ]
+    },
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
