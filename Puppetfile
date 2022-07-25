@@ -3,7 +3,6 @@
 #
 forge 'http://forge.puppetlabs.com'
 
-mod 'camptocamp/catalog_diff', :latest
 mod 'choria/choria', '0.28.1'
 mod 'choria/mcollective', '0.14.2'
 mod 'choria/mcollective_agent_filemgr', '2.0.1'
