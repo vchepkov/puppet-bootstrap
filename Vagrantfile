@@ -37,7 +37,7 @@ Vagrant.configure(2) do |config|
   # Puppet
   config.vm.define "puppet", primary: true do |puppet|
     puppet.vm.hostname = "puppet.localdomain"
-    puppet.vm.network "private_network", ip: "192.168.56.20"
+    puppet.vm.network "private_network", ip: "192.168.56.20", virtualbox__intnet: "puppet"
     puppet.vm.network "forwarded_port", guest: 80,   host: 8000
 
     puppet.vm.provider "virtualbox" do |vb|
@@ -78,7 +78,7 @@ Vagrant.configure(2) do |config|
   # Node
   config.vm.define "node", autostart: false do |node|
     node.vm.hostname = "node.localdomain"
-    node.vm.network "private_network", ip: "192.168.56.21"
+    node.vm.network "private_network", ip: "192.168.56.21", virtualbox__intnet: "puppet"
 
     node.vm.provider "virtualbox" do |vb|
       vb.name   = "node"
