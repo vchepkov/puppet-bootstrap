@@ -15,5 +15,5 @@ hierarchy:
   - name: "Nodes data"
     paths:
       - "nodes/%{trusted.certname}.yaml"
-      - "%{facts.domain}.yaml"
+      - "%{facts.networking.domain}.yaml"
       - "common.yaml"
