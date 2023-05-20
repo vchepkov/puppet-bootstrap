@@ -41,16 +41,16 @@ class bootstrap::server (
   }
 
   class { 'puppet':
-    autosign            => $autosign,
-    dns_alt_names       => $dns_alt_names,
-    environment         => $environment,
-    hiera_config        => "${settings::confdir}/hiera.yaml",
-    runmode             => 'unmanaged',
-    server              => true,
-    server_foreman      => false,
-    server_reports      => 'puppetdb',
-    server_storeconfigs => true,
-    puppetmaster        => $puppet_server,
+    autosign              => $autosign,
+    dns_alt_names         => $dns_alt_names,
+    environment           => $environment,
+    hiera_config          => "${settings::confdir}/hiera.yaml",
+    runmode               => 'unmanaged',
+    server                => true,
+    server_foreman        => false,
+    server_reports        => 'puppetdb',
+    server_storeconfigs   => true,
+    agent_server_hostname => $puppet_server,
   }
 
   # workaround for choria expecting puppet in PATH
