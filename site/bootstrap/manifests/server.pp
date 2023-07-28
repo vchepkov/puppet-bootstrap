@@ -12,11 +12,14 @@ class bootstrap::server (
     provider => 'dnfmodule',
   }
 
+  # BZ 2224411
+  stdlib::ensure_packages('tzdata-java')
+
   class { 'puppetdb::database::postgresql':
     manage_package_repo => true,
     postgres_version    => $postgres_version,
     before              => Class['puppetdb::server'],
-    require             => Package['postgresql-module'],
+    require             => Package['postgresql-module','tzdata-java'],
   }
 
   class { 'puppetdb::server':
