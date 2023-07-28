@@ -20,6 +20,7 @@ class bootstrap::dashboard {
     config              => {
       'DAILY_REPORTS_CHART_DAYS' => '10',
       'ENABLE_CATALOG'           => 'True',
+      'ENABLE_CLASS'             => 'True',
     },
   }
 
