@@ -31,7 +31,7 @@ puppet::server::cipher_suites:
   - 'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
 puppet::server::ssl_protocols:
   - 'TLSv1.3'
-  - 'TLSv1.2'  
+  - 'TLSv1.2'
 puppet::server_check_for_updates: false
 puppet::server_common_modules_path:
   - /etc/puppetlabs/code/modules
@@ -53,6 +53,3 @@ puppetdb::server::cipher_suites: 'TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256,
 puppetdb::server::node_ttl: '0d'
 puppetdb::server::node_purge_ttl: '1d'
 puppetdb::server::ssl_protocols: 'TLSv1.3,TLSv1.2'
-
-r10k::deploy_settings:
-  generate_types: true

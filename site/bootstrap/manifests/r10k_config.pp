@@ -12,11 +12,11 @@ class bootstrap::r10k_config (
     content => epp("${module_name}/refresh-environments.sh.epp"),
   }
 
-  ensure_packages(['curl','git-core','mailx'])
+  stdlib::ensure_packages(['curl','git-core','mailx'])
 
   class { 'r10k':
     remote   => $control_repo,
-    version  => '>= 3.2.0',
+    version  => '>= 3.9.0',
     postrun  => ['/opt/puppetlabs/puppet/bin/refresh-environments.sh','$modifiedenvs'],
     cachedir => "${facts['puppet_vardir']}/r10k",
   }
@@ -28,7 +28,7 @@ class bootstrap::r10k_config (
 
   cron { 'r10k deploy':
     ensure  => $ensure,
-    command => '/opt/puppetlabs/puppet/bin/r10k deploy environment -p -v error >/dev/null',
+    command => '/opt/puppetlabs/puppet/bin/r10k deploy environment -m -v error >/dev/null',
     user    => $user,
     special => 'daily',
   }

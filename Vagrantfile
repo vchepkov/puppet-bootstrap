@@ -59,6 +59,11 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/tmp/modules \
       puppet/r10k
 
+      # workaround for broken stdlib dependencies
+      /opt/puppetlabs/bin/puppet module install \
+      --environment production --modulepath=/tmp/modules --force \
+      puppetlabs/stdlib
+
       /opt/puppetlabs/bin/puppet apply \
       --environment production --modulepath=/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
@@ -70,7 +75,7 @@ Vagrant.configure(2) do |config|
       yum -y install git-core
 
       /vagrant/bin/bootstrap.sh
-      
+
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
     SHELL
   end

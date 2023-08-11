@@ -1,6 +1,6 @@
 # Set bootstrap defaults
 class bootstrap (
-  $agent_service  = 'puppet',
-  $agent_bin      = '/opt/puppetlabs/bin/puppet',
-  $server_service = 'puppetserver',
+  String $agent_service = 'puppet',
+  Stdlib::UnixPath $agent_bin = '/opt/puppetlabs/bin/puppet',
+  String $server_service = 'puppetserver',
 ) {}

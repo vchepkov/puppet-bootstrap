@@ -1,7 +1,7 @@
 # class to configure hiera
 class bootstrap::hiera inherits bootstrap {
   $build_packages = ['bzip2','gcc','make']
-  ensure_packages($build_packages)
+  stdlib::ensure_packages($build_packages)
 
   $hiera_server_gems = ['hiera-eyaml']
   $hiera_agent_gems  = ['hiera-eyaml']
