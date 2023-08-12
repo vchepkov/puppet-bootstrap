@@ -8,6 +8,6 @@ lookup_options:
 bootstrap::maintenance::clean_dir:
   - "%{facts.puppet_vardir}/clientbucket"
   - "%{facts.puppet_vardir}/reports"
-  
+
 classes:
   - bootstrap::agent

@@ -1,4 +1,4 @@
-<%- | 
+<%- |
   Array[Stdlib::Unixpath] $clean_dir,
   String $max_age,
 | -%>
