@@ -55,13 +55,13 @@ Vagrant.configure(2) do |config|
 
       rm -rf /tmp/modules
 
-      /opt/puppetlabs/bin/puppet module install \
-      --environment production --modulepath=/tmp/modules \
-      puppet/r10k
-
       # workaround for broken stdlib dependencies
       /opt/puppetlabs/bin/puppet module install \
-      --environment production --modulepath=/tmp/modules --force \
+      --environment production --modulepath=/tmp/modules --ignore-dependencies \
+      puppet/r10k
+
+      /opt/puppetlabs/bin/puppet module install \
+      --environment production --modulepath=/tmp/modules --ignore-dependencies \
       puppetlabs/stdlib
 
       /opt/puppetlabs/bin/puppet apply \
