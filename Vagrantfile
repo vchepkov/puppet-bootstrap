@@ -16,7 +16,7 @@ Vagrant.configure(2) do |config|
 
   vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
-  config.vm.box = "almalinux/8"
+  config.vm.box = "almalinux/9"
 
   config.vm.synced_folder ".", "/vagrant"
 
@@ -27,6 +27,14 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
     vb.customize ["modifyvm", :id, "--audio", "none"]
   end
+
+  config.vm.provision :shell, inline: <<-SHELL
+      systemctl restart rsyslog
+      systemctl mask firewalld
+      systemctl stop firewalld
+      yum -y install http://yum.puppet.com/puppet7-release-el-9.noarch.rpm
+      yum -y install puppet-agent
+  SHELL
 
   config.vm.provision :hosts do |h|
     h.add_localhost_hostnames = false
@@ -47,12 +55,6 @@ Vagrant.configure(2) do |config|
     end
 
     puppet.vm.provision "shell", run: "once", env: {"PUPPET_ENV" => vagrant_branch}, inline: <<-SHELL
-      systemctl restart rsyslog
-      systemctl mask firewalld
-      systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet7-release-el-8.noarch.rpm
-      yum -y install puppet-agent
-
       rm -rf /tmp/modules
 
       /opt/puppetlabs/bin/puppet module install \
@@ -86,11 +88,6 @@ Vagrant.configure(2) do |config|
     end
 
     node.vm.provision "shell", run: "once", inline: <<-SHELL
-      systemctl restart rsyslog
-      systemctl mask firewalld
-      systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet7-release-el-8.noarch.rpm
-      yum -y install puppet-agent
       /opt/puppetlabs/bin/puppet config set server puppet.localdomain --section main
       /opt/puppetlabs/bin/puppet config set environment #{vagrant_branch} --section agent
       /opt/puppetlabs/bin/puppet resource service puppet ensure=running enable=true
