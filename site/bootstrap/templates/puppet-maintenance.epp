@@ -4,5 +4,5 @@
 | -%>
 # managed by puppet
 <% $clean_dir.each |$d| { -%>
-e <%= $d %>/ - - - <%= $max_age %>
+e <%= $d %> - - - <%= $max_age %>
 <% } -%>
