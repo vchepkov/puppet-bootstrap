@@ -1,0 +1,2 @@
+---
+bootstrap::r10k_config::mailx_package: s-nail

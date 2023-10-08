@@ -1,8 +1,9 @@
 # Configure r10k
 class bootstrap::r10k_config (
-  String  $control_repo = 'https://github.com/vchepkov/puppet-bootstrap.git',
-  String  $user         = 'root',
-  Boolean $enable       = true,
+  String  $control_repo  = 'https://github.com/vchepkov/puppet-bootstrap.git',
+  String  $user          = 'root',
+  String  $mailx_package = 'mailx',
+  Boolean $enable        = true,
 ) {
   file { '/opt/puppetlabs/puppet/bin/refresh-environments.sh':
     ensure  => file,
@@ -12,7 +13,7 @@ class bootstrap::r10k_config (
     content => epp("${module_name}/refresh-environments.sh.epp"),
   }
 
-  stdlib::ensure_packages(['curl','git-core','mailx'])
+  stdlib::ensure_packages(['curl','git-core',$mailx_package])
 
   class { 'r10k':
     remote   => $control_repo,
