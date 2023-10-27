@@ -32,8 +32,8 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      yum -y install http://yum.puppet.com/puppet7-release-el-9.noarch.rpm
-      yum -y install puppet-agent
+      dnf -y install http://yum.puppet.com/puppet7-release-el-9.noarch.rpm
+      dnf -y install puppet-agent
   SHELL
 
   config.vm.provision :hosts do |h|
@@ -69,7 +69,7 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/tmp/modules \
       -e "file_line { 'mco': path=>'/root/.bashrc', line=>'alias mco=\\'sudo -u vagrant USER=vagrant /opt/puppetlabs/puppet/bin/mco\\''}"
 
-      yum -y install git-core
+      dnf -y install git-core
 
       /vagrant/bin/bootstrap.sh
 
