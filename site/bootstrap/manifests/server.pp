@@ -11,15 +11,18 @@ class bootstrap::server (
     name     => 'postgresql',
     provider => 'dnfmodule',
   }
-
-  # BZ 2224411
-  stdlib::ensure_packages('tzdata-java')
-
-  class { 'puppetdb::database::postgresql':
-    manage_package_repo => true,
+  #FIXME: https://github.com/puppetlabs/puppetlabs-postgresql/issues/1565
+  -> yumrepo { 'yum.postgresql.org':
+    descr    => "PostgreSQL ${postgres_version} \$releasever - \$basearch",
+    baseurl  => "https://download.postgresql.org/pub/repos/yum/${postgres_version}/redhat/rhel-\$releasever-\$basearch",
+    enabled  => 1,
+    gpgcheck => 1,
+    gpgkey   => 'https://download.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-RHEL',
+  }
+  -> class { 'puppetdb::database::postgresql':
+    manage_package_repo => false,
     postgres_version    => $postgres_version,
     before              => Class['puppetdb::server'],
-    require             => Package['postgresql-module','tzdata-java'],
   }
 
   class { 'puppetdb::server':
