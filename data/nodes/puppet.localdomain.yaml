@@ -10,6 +10,8 @@ classes:
 bootstrap::maintenance::clean_dir:
   - /opt/puppetlabs/server/data/puppetserver/bucket
 
+bootstrap::maintenance::user: puppet
+
 # Workaround for theforeman/puppet module insisting setting environment
 bootstrap::server::environment: "%{server_facts.environment}"
 
