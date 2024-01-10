@@ -1,6 +1,6 @@
 {
   "name": "vchepkov-bootstrap",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "author": "Vadym Chepkov",
   "summary": "Bootstrap Puppet Server",
   "license": "Apache-2.0",
@@ -22,11 +22,15 @@
     },
     {
       "name": "puppetlabs/apache",
-      "version_requirement": ">= 6.0.0 < 12.0.0"
+      "version_requirement": ">= 6.0.0 < 13.0.0"
     },
     {
       "name": "puppetlabs/cron_core",
       "version_requirement": ">= 1.0.0 < 2.0.0"
+    },
+    {
+      "name": "puppetlabs/postgresql",
+      "version_requirement": ">= 10.0.3 < 11.0.0"
     },
     {
       "name": "puppetlabs/puppetdb",

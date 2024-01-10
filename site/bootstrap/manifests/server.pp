@@ -10,17 +10,11 @@ class bootstrap::server (
     ensure   => disabled,
     name     => 'postgresql',
     provider => 'dnfmodule',
+    before   => Class['puppetdb::database::postgresql'],
   }
-  #FIXME: https://github.com/puppetlabs/puppetlabs-postgresql/issues/1565
-  -> yumrepo { 'yum.postgresql.org':
-    descr    => "PostgreSQL ${postgres_version} \$releasever - \$basearch",
-    baseurl  => "https://download.postgresql.org/pub/repos/yum/${postgres_version}/redhat/rhel-\$releasever-\$basearch",
-    enabled  => 1,
-    gpgcheck => 1,
-    gpgkey   => 'https://download.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-RHEL',
-  }
-  -> class { 'puppetdb::database::postgresql':
-    manage_package_repo => false,
+
+  class { 'puppetdb::database::postgresql':
+    manage_package_repo => true,
     postgres_version    => $postgres_version,
     before              => Class['puppetdb::server'],
   }
