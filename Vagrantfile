@@ -61,6 +61,9 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/tmp/modules \
       puppet/r10k
 
+      # Broken faraday
+      /opt/puppetlabs/puppet/bin/gem install --no-document faraday -v 2.8.1
+
       /opt/puppetlabs/bin/puppet apply \
       --environment production --modulepath=/tmp/modules \
       -e "class { 'r10k': remote => 'https://github.com/vchepkov/puppet-bootstrap.git' }"
