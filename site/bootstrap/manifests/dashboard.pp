@@ -21,6 +21,7 @@ class bootstrap::dashboard {
       'DAILY_REPORTS_CHART_DAYS' => '10',
       'ENABLE_CATALOG'           => 'True',
       'ENABLE_CLASS'             => 'True',
+      'PUPPETDB_SSL_VERIFY'      => 'False',
     },
   }
 
