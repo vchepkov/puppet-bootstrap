@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      dnf -y install http://yum.puppet.com/puppet7-release-el-9.noarch.rpm
+      dnf -y install http://yum.puppet.com/puppet8-release-el-9.noarch.rpm
       dnf -y install puppet-agent
   SHELL
 
