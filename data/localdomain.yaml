@@ -8,6 +8,7 @@ choria::server_config:
   plugin.choria.use_srv: false
   plugin.choria.middleware_hosts: "puppet.localdomain:4222"
 
+mcollective::facts_refresh_type: systemd
 mcollective::plugin_classes:
   - mcollective_agent_shell
 
