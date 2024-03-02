@@ -61,8 +61,8 @@ Vagrant.configure(2) do |config|
       --environment production --modulepath=/tmp/modules \
       puppet/r10k
 
-      # Broken faraday
-      /opt/puppetlabs/puppet/bin/gem install --no-document faraday -v 2.8.1
+      # Later version is incompatible
+      /opt/puppetlabs/bin/puppet resource package faraday ensure=2.8.1 provider=puppet_gem
 
       /opt/puppetlabs/bin/puppet apply \
       --environment production --modulepath=/tmp/modules \
