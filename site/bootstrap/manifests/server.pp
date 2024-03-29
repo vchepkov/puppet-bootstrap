@@ -10,19 +10,14 @@ class bootstrap::server (
     ensure   => disabled,
     name     => 'postgresql',
     provider => 'dnfmodule',
-    before   => Class['puppetdb::database::postgresql'],
+    before   => Class['puppetdb'],
   }
 
-  class { 'puppetdb::database::postgresql':
-    manage_package_repo => true,
-    postgres_version    => $postgres_version,
-    before              => Class['puppetdb::server'],
-  }
-
-  class { 'puppetdb::server':
-    listen_port             => '8080',
+  class { 'puppetdb':
     manage_firewall         => false,
+    listen_port             => '8080',
     disable_update_checking => true,
+    postgres_version        => $postgres_version,
   }
 
   #FIXME: Workaround for puppetdb 6.14
