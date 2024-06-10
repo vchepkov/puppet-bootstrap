@@ -70,6 +70,8 @@ Vagrant.configure(2) do |config|
       -e "file_line { 'mco': path=>'/root/.bashrc', line=>'alias mco=\\'sudo -u vagrant USER=vagrant /opt/puppetlabs/puppet/bin/mco\\''}"
 
       dnf -y install git-core
+      # required by PuppetDB module 8.1.0
+      dnf install -y glibc-langpack-en
 
       /vagrant/bin/bootstrap.sh
 
