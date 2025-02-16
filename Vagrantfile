@@ -32,8 +32,8 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      dnf -y install http://yum.puppet.com/puppet8-release-el-9.noarch.rpm
-      dnf -y install puppet-agent
+      dnf -y install https://yum.overlookinfratech.com/openvox8-release-el-9.noarch.rpm
+      dnf -y install openvox-agent
   SHELL
 
   config.vm.provision :hosts do |h|
