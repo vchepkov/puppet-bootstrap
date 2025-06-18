@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
       systemctl restart rsyslog
       systemctl mask firewalld
       systemctl stop firewalld
-      dnf -y install https://yum.overlookinfratech.com/openvox8-release-el-9.noarch.rpm
+      dnf -y install https://yum.voxpupuli.org/openvox8-release-el-9.noarch.rpm
       dnf -y install openvox-agent
   SHELL
 
