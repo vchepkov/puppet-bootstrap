@@ -42,7 +42,7 @@
     },
     {
       "name": "theforeman/puppet",
-      "version_requirement": ">= 17.0.0 < 21.0.0"
+      "version_requirement": ">= 17.0.0 < 22.0.0"
     },
     {
       "name": "vchepkov/puppetboard",
