@@ -6,11 +6,15 @@ class bootstrap::server (
   Optional[String] $environment          = undef,
   String $postgres_version               = '14',
 ) inherits bootstrap {
-  package { 'postgresql-module':
-    ensure   => disabled,
-    name     => 'postgresql',
-    provider => 'dnfmodule',
-    before   => Class['puppetdb'],
+
+  # dnfmodule was deprecated in EL10
+  if versioncmp ($facts['os']['release']['major'], '10') < 0 {
+    package { 'postgresql-module':
+      ensure   => disabled,
+      name     => 'postgresql',
+      provider => 'dnfmodule',
+      before   => Class['puppetdb'],
+    }
   }
 
   class { 'puppetdb':
@@ -50,8 +54,7 @@ class bootstrap::server (
 
   # workaround for choria expecting puppet in PATH
   file { '/usr/bin/puppet':
-    ensure  => 'link',
-    target  => '/opt/puppetlabs/bin/puppet',
-    seltype => 'puppetagent_exec_t',
+    ensure => 'link',
+    target => '/opt/puppetlabs/bin/puppet',
   }
 }
