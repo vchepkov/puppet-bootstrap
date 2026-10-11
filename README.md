@@ -4,3 +4,4 @@ Bootstrap Puppet Server
   - puppetdb
   - puppetboard
   - choria/mcollective
+  - openbolt (choria transport)
