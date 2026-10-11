@@ -23,6 +23,7 @@ class bootstrap::bolt (
 
     # bolt_tasks agents download task files from the server, so read the same modules
     $project = {
+      'log'        => { 'bolt-debug.log' => 'disable' },
       'modulepath' => [
         "${settings::environmentpath}/${environment}/modules",
         "${settings::environmentpath}/${environment}/site",
