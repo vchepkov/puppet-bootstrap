@@ -17,6 +17,13 @@ class bootstrap::server (
     }
   }
 
+  # puppetlabs/postgresql ships only the x86_64 PGDG key
+  if $facts['os']['architecture'] == 'aarch64' {
+    Yumrepo <| title == 'yum.postgresql.org' or title == 'pgdg-common' |> {
+      gpgkey => 'https://download.postgresql.org/pub/repos/yum/keys/PGDG-RPM-GPG-KEY-AARCH64-RHEL',
+    }
+  }
+
   class { 'puppetdb':
     manage_firewall         => false,
     listen_port             => '8080',
