@@ -17,3 +17,9 @@ puppet::server_package: openvox-server
 
 puppetdb::puppetdb_package: openvoxdb
 puppetdb::master::config::terminus_package: openvoxdb-termini
+# The module default picks yaml under puppet apply ($serverversion unset).
+puppetdb::master::routes::routes:
+  server:
+    facts:
+      terminus: puppetdb
+      cache: json
