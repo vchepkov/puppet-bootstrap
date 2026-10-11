@@ -16,16 +16,16 @@ Vagrant.configure(2) do |config|
 
   vagrant_branch = ENV['PUPPET_ENV'] || 'production'
 
-  config.vm.box = "almalinux/9"
+  config.vm.box = "bento/almalinux-9"
 
-  config.vm.synced_folder ".", "/vagrant"
+  config.vm.synced_folder ".", "/vagrant", SharedFoldersEnableSymlinksCreate: false
 
   config.vm.provider :virtualbox do |vb|
     vb.auto_nat_dns_proxy = false
     vb.default_nic_type = "virtio"
     vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
     vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
-    vb.customize ["modifyvm", :id, "--audio", "none"]
+    vb.customize ["modifyvm", :id, "--audio-enabled", "off"]
   end
 
   config.vm.provision :shell, inline: <<-SHELL
