@@ -4,7 +4,7 @@ class bootstrap::server (
   Optional[Array[String]] $dns_alt_names = undef,
   Boolean $autosign                      = true,
   Optional[String] $environment          = undef,
-  String $postgres_version               = '14',
+  String $postgres_version               = '17',
 ) inherits bootstrap {
 
   # dnfmodule was deprecated in EL10

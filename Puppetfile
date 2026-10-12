@@ -33,5 +33,5 @@ mod 'vchepkov/puppetboard', '8.0.0'
 
 # Forge release is stale; bolt choria transport needs 1.2.1+
 mod 'mcollective_agent_shell',
-  git: 'https://github.com/choria-plugins/shell-agent',
-  tag: '1.2.1'
+  :git => 'https://github.com/choria-plugins/shell-agent',
+  :tag => '1.2.1'
