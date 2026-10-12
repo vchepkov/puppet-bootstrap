@@ -49,6 +49,8 @@ puppet::server_additional_settings:
 puppet::server_strict_variables: true
 puppet::show_diff: true
 
+puppetboard::install::revision: '8.1.0'
+
 puppetdb::cipher_suites: 'TLS_AES_256_GCM_SHA384,TLS_AES_128_GCM_SHA256'
 puppetdb::node_ttl: '0d'
 puppetdb::node_purge_ttl: '1d'

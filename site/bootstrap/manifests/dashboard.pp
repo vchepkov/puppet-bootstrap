@@ -19,6 +19,7 @@ class bootstrap::dashboard {
     default_environment => '*',
     config              => {
       'DAILY_REPORTS_CHART_DAYS' => '10',
+      'DAILY_REPORTS_CHART_MODE' => "'split'",
       'ENABLE_CATALOG'           => 'True',
       'ENABLE_CLASS'             => 'True',
       'PUPPETDB_SSL_VERIFY'      => 'False',
