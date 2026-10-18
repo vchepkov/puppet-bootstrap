@@ -15,10 +15,8 @@ classes:
 puppet::client_package: openvox-agent
 puppet::server_package: openvox-server
 
-puppetdb::puppetdb_package: openvoxdb
-puppetdb::master::config::terminus_package: openvoxdb-termini
-# The module default picks yaml under puppet apply ($serverversion unset).
-puppetdb::master::routes::routes:
+# The module default still writes the legacy 'master' section.
+openvoxdb::master::routes::routes:
   server:
     facts:
       terminus: puppetdb

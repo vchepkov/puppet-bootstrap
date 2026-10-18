@@ -6,14 +6,13 @@ class bootstrap::server (
   Optional[String] $environment          = undef,
   String $postgres_version               = '17',
 ) inherits bootstrap {
-
   # dnfmodule was deprecated in EL10
   if versioncmp ($facts['os']['release']['major'], '10') < 0 {
     package { 'postgresql-module':
       ensure   => disabled,
       name     => 'postgresql',
       provider => 'dnfmodule',
-      before   => Class['puppetdb'],
+      before   => Class['openvoxdb'],
     }
   }
 
@@ -24,27 +23,20 @@ class bootstrap::server (
     }
   }
 
-  class { 'puppetdb':
+  class { 'openvoxdb':
     manage_firewall         => false,
-    listen_port             => '8080',
+    listen_port             => 8080,
     disable_update_checking => true,
     postgres_version        => $postgres_version,
   }
 
-  #FIXME: Workaround for puppetdb 6.14
-  file { '/etc/puppetlabs/puppetdb/conf.d/auth.conf':
-    ensure  => file,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
-    content => epp("${module_name}/puppetdb-auth-conf.epp"),
-    require => Package[$puppetdb::server::puppetdb_package],
-    notify  => Service[$puppetdb::server::puppetdb_service],
+  # Replaces puppet::server::puppetdb, which hardcodes puppetlabs/puppetdb classes.
+  class { 'openvoxdb::master::config':
+    puppetdb_server     => $puppet_server,
+    manage_storeconfigs => false,
+    restart_puppet      => false,
   }
-
-  class { 'puppet::server::puppetdb':
-    server => $puppet_server,
-  }
+  Class['openvoxdb::master::puppetdb_conf'] ~> Class['puppet::server::service']
 
   class { 'puppet':
     autosign              => $autosign,
