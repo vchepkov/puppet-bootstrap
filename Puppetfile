@@ -5,6 +5,7 @@ forge 'http://forge.puppetlabs.com'
 
 mod 'choria/choria', '0.32.1'
 mod 'choria/mcollective', '0.15.0'
+mod 'choria/mcollective_agent_bolt_tasks', '0.22.0'
 mod 'choria/mcollective_agent_filemgr', '2.1.0'
 mod 'choria/mcollective_agent_package', '5.5.1'
 mod 'choria/mcollective_agent_puppet', '2.5.1'
