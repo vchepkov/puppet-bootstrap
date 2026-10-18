@@ -13,7 +13,8 @@ class bootstrap::bolt (
   $inventory = {
     'config'  => {
       'transport' => 'choria',
-      'choria'    => { 'puppet-environment' => $environment },
+      # shell pushes task files from the controller; bolt_tasks needs them deployed on the server
+      'choria'    => { 'puppet-environment' => $environment, 'task-agent' => 'shell' },
     },
     'targets' => [{ '_plugin' => 'puppetdb', 'query' => 'nodes[certname] {}' }],
   }
